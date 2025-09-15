@@ -1,0 +1,122 @@
+---
+// astro components
+import Root from "../../components/root.astro";
+import Sidenav from "../../components/standard/sideNavigation.astro";
+import Cell from "../../components/standard/bentoCell.astro";
+import AnimatedCell from "../../components/standard/animatedBentoCell.astro";
+import Footer from "../../components/standard/pageFooter.astro";
+
+// react components
+import Modal from "../../components/standard/react/modal.jsx";
+
+// Server-side achievement data
+const achievements = [
+  {
+    badges: ["Incomplete", "WIP"],
+    title: "Google IT Automation with Python",
+    description: "A course by Google to learn Python automation.",
+    date: "2025",
+    customClass: "min-w-[800px] min-h-[400px]",
+    tag: "GoogleIT",
+    link: "/awards#GoogleIT",
+    renderLink: "/awards/GoogleIT",
+  },
+  {
+    badges: ["Incomplete", "WIP"],
+    title: "Google Data Analytics",
+    description: "Google's professional certificate program for data analysis.",
+    date: "2025",
+    customClass: "min-w-[400px] min-h-[400px]",
+    tag: "GoogleAnalytics",
+    link: "/awards#GoogleAnalytics",
+    renderLink: "/awards/GoogleAnalytics",
+  },
+  {
+    badges: ["A"],
+    title: "AP Computer Science Principles",
+    description: "Advanced Placement course in computer science principles.",
+    date: "2024",
+    customClass: "min-w-[400px] min-h-[400px]",
+    tag: "APCSP",
+    link: "/awards#APCSP",
+    renderLink: "/awards/APCSP",
+  },
+  {
+    badges: ["4"],
+    title: "AP CSP Exam",
+    description: "Scored 4 on the AP Computer Science Principles exam.",
+    date: "2024",
+    customClass: "min-w-[800px] min-h-[400px]",
+    tag: "APCSPExam",
+    link: "/awards#APCSPExam",
+    renderLink: "/awards/APCSP",
+  },
+];
+---
+
+<Root title="Awards">
+  <div class="flex flex-col h-screen w-screen bg-base-200 gap-2 p-2">
+    <header class="navbar">
+      <div class="flex-1 ml-20">
+        <span class="text-3xl font-bold">Justinwhite.work</span>
+      </div>
+    </header>
+
+    <div class="flex flex-1 gap-2 min-h-0">
+      <aside class="menu w-20">
+        <Sidenav />
+      </aside>
+
+      <main class="card flex-1 overflow-y-auto overflow-x-hidden pr-2">
+        <div class="flex flex-wrap h-full gap-4">
+          {
+            achievements.map((ach, i) => (
+              <div key={i} class={`flex flex-col flex-1 ${ach.customClass}`}>
+                {/* Modal for this achievement */}
+                <Modal
+                  key={i}
+                  title={ach.title}
+                  tag={ach.tag ? `#${ach.tag}` : undefined}
+                  renderURL={ach.renderLink}
+                  client:load
+                />
+
+                {/* Achievement card */}
+                <a href={ach.link} class="flex flex-col flex-1">
+                  <AnimatedCell
+                    class={`bg-base-100 flex flex-col justify-between p-6 ${ach.customClass}`}
+                  >
+                    <div class="space-y-4">
+                      <h2 class="text-2xl font-bold text-accent flex flex-wrap items-center gap-2">
+                        {ach.badges.map((b, j) => (
+                          <span
+                            key={j}
+                            class={`badge ${j === ach.badges.length - 1 ? "badge-accent" : "badge-outline"}`}
+                          >
+                            {b}
+                          </span>
+                        ))}
+                        {ach.title}
+                      </h2>
+                      <p class="text-sm text-secondary-content">
+                        {ach.description}
+                      </p>
+                    </div>
+                    <span class="text-xs font-light text-gray-500 mt-auto">
+                      {ach.date}
+                    </span>
+                  </AnimatedCell>
+                </a>
+              </div>
+            ))
+          }
+
+          {/* Footer Card */}
+          <Cell>
+            <Footer class="min-w-[900px]" />
+          </Cell>
+        </div>
+      </main>
+    </div>
+  </div>
+</Root>

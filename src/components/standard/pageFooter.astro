@@ -1,0 +1,123 @@
+---
+const { class: customClass } = Astro.props;
+
+// Server-side achievement data
+const achievements = [
+  {
+    badges: ["Incomplete", "WIP"],
+    title: "Google IT Automation with Python",
+    description: "A course by Google to learn Python automation.",
+    date: "2025",
+    customClass: "min-w-[800px] min-h-[400px]",
+    link: "/awards#GoogleIT",
+  },
+  {
+    badges: ["Incomplete", "WIP"],
+    title: "Google Data Analytics",
+    description: "Google's professional certificate program for data analysis.",
+    date: "2025",
+    customClass: "min-w-[400px] min-h-[400px]",
+    link: "/awards#GoogleAnalytics",
+  },
+  {
+    badges: ["A"],
+    title: "AP Computer Science Principles",
+    description: "Advanced Placement course in computer science principles.",
+    date: "2024",
+    customClass: "min-w-[400px] min-h-[400px]",
+    link: "/awards#APCSP",
+  },
+  {
+    badges: ["4"],
+    title: "AP CSP Exam",
+    description: "Scored 4 on the AP Computer Science Principles exam.",
+    date: "2024",
+    customClass: "min-w-[800px] min-h-[400px]",
+    link: "/awards#APCSP",
+  },
+];
+---
+
+<footer
+  class={`bg-base-200 text-base-content text-base rounded ${customClass}`}
+>
+  <!-- Link grid -->
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6 py-10"
+  >
+    <!-- Education / Awards -->
+    <nav class="flex flex-col">
+      <h3 class="text-lg footer-title">
+        <a href="/awards" class="link link-hover">Education & Awards</a>
+      </h3>
+      <div class="flex flex-col gap-2 mt-2">
+        {
+          achievements.map((ach, i) => (
+            <a href={ach.link} class="link link-hover" key={i}>
+              {ach.badges.map((b, j) => (
+                <span
+                  key={j}
+                  class={`badge mr-1 mb-1 ${j === ach.badges.length - 1 ? "badge-accent" : "badge-outline"}`}
+                >
+                  {b}
+                </span>
+              ))}
+              {ach.title}
+            </a>
+          ))
+        }
+      </div>
+    </nav>
+
+    <!-- Projects -->
+    <nav class="flex flex-col">
+      <h3 class="text-lg footer-title">
+        <a href="/projects" class="link link-hover">Projects</a>
+      </h3>
+      <a href="/projects#web" class="link link-hover">Web Projects</a>
+      <a href="/projects#software" class="link link-hover">Software Projects</a>
+      <a href="/projects#research" class="link link-hover"
+        >Research & Experiments</a
+      >
+      <a href="/projects#opensource" class="link link-hover">Open Source</a>
+    </nav>
+
+    <!-- Links -->
+    <nav class="flex flex-col">
+      <h3 class="text-lg footer-title">
+        <a href="/links" class="link link-hover">Links</a>
+      </h3>
+      <a href="/blog" class="link link-hover">Blog</a>
+      <a href="/about" class="link link-hover">About Me</a>
+      <a href="/contact" class="link link-hover">Contact</a>
+      <a href="/newsletter" class="link link-hover">Newsletter</a>
+    </nav>
+
+    <!-- Community -->
+    <nav class="flex flex-col">
+      <h3 class="text-lg footer-title">
+        <a href="/community" class="link link-hover">Community</a>
+      </h3>
+      <a href="/forums" class="link link-hover">Forums</a>
+      <a href="/discord" class="link link-hover">Discord</a>
+      <a href="/events" class="link link-hover">Events</a>
+      <a href="/mentorship" class="link link-hover">Mentorship</a>
+    </nav>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Bottom bar -->
+  <aside
+    class="flex flex-col sm:flex-row gap-6 justify-center sm:justify-between items-center px-6 py-4"
+  >
+    <!-- Brand -->
+    <div class="flex items-center gap-4">
+      <img alt="Logo" src="/daisy-components/logo.svg" class="w-8" />
+      <div>
+        <p class="text-2xl font-bold">Justinwhite.work</p>
+        <small>Copyright © 2025 - All rights reserved</small>
+      </div>
+    </div>
+  </aside>
+</footer>

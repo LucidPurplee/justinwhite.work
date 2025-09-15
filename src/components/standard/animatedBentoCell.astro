@@ -1,0 +1,10 @@
+---
+const { class: customClass } = Astro.props;
+import BentoCell from "./bentoCell.astro";
+---
+
+<BentoCell class={`transition-all duration-300 ease-in-out hover:m-0.25 hover:border-solid border-base-200 hover:border-4 border-0 border-base-300  ${customClass}`}>
+    <div class="card-body">
+        <slot/>
+    </div>
+</div>
