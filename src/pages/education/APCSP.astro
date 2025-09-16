@@ -1,0 +1,113 @@
+---
+import Root from "../../components/root.astro";
+import Sidenav from "../../components/standard/sideNavigation.astro";
+import Cell from "../../components/standard/bentoCell.astro";
+import Embeddable from "../../components/standard/pages/Embeddable.astro";
+---
+
+<Root title="Education - Justinwhite.work">
+  <div
+    id="page-container"
+    class="flex flex-col h-screen w-screen bg-base-200 gap-2 p-2"
+  >
+    <header id="page-header" class="navbar">
+      <div class="flex-1 ml-20">
+        <span class="text-3xl font-bold">Justinwhite.work</span>
+      </div>
+    </header>
+
+    <div class="flex flex-1 gap-2 min-h-0">
+      <aside id="page-sidebar" class="menu w-20">
+        <Sidenav />
+      </aside>
+
+      <Embeddable>
+        <div class="space-y-6 p-4 max-w-[48rem]">
+          <h1 class="text-3xl font-bold">
+            AP Computer Science Principles (AP CSP)
+          </h1>
+
+          <p>
+            AP CSP gave me a solid foundation in the fundamental logic behind
+            computers. The course included a crash course in Python and provided
+            opportunities to build numerous micro-projects that reinforced
+            concepts in programming, algorithms, and computational thinking.
+          </p>
+
+          <h2 class="text-2xl font-semibold">Primary Achievement</h2>
+          <p>
+            My main project was developing a <span
+              class="tooltip underline"
+              data-tip="Provided useful utility functions for reading/writing individual pixels, not directly exposed by the gfx library."
+            >
+              <strong>rendering utility library</strong>
+            </span>
+            for the graphics tool in our environment. Using only Python’s built-in
+            math utilities (no external libraries), I implemented <span
+              class="tooltip underline"
+              data-tip="Perlin noise is smooth, pseudo-random noise for natural textures."
+            >
+              <strong>Perlin Noise</strong>
+            </span>
+            directly on the canvas. I extended the library for a prototype that could
+            <span
+              class="tooltip underline"
+              data-tip="Encoding/Hashing algorithms convert raw data to a simpler format that is easier to transmit, compress and obfuscate."
+            >
+              <strong>encode the canvas to a hash (and then back again)</strong>
+            </span>, demonstrating algorithmic skill, creative problem-solving,
+            and technical independence.
+          </p>
+
+          <h2 class="text-2xl font-semibold">
+            Other Projects & Micro-Achievements
+          </h2>
+          <ul class="list-disc list-inside space-y-1">
+            <li>
+              Built micro-projects exploring loops, conditionals, and data
+              structures
+            </li>
+            <li>
+              Created small games and visualizations to test algorithmic
+              thinking
+            </li>
+            <li>
+              Optimized rendering performance for complex graphical features
+            </li>
+            <li>
+              Developed debugging and iterative design skills through repeated
+              testing
+            </li>
+            <li>
+              Experimented with data serialization techniques for storing
+              project state
+            </li>
+            <li>
+              Learned to modularize code for reuse across multiple projects
+            </li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold">Exam & Results</h2>
+          <p>
+            Completed the AP CSP Exam, earning a
+            <span
+              class="tooltip underline"
+              data-tip="Scores are on a zero to five range. Four demonstrates near mastery."
+            >
+              <strong>four</strong>
+            </span>, demonstrating strong proficiency in programming concepts,
+            data analysis, and understanding the broader impacts of computing on
+            society.
+          </p>
+
+          <p>
+            Overall, AP CSP honed my programming foundations, provided hands-on
+            project experience, and taught me to approach technical challenges
+            creatively—skills that I continue to apply in larger software
+            projects today.
+          </p>
+        </div>
+      </Embeddable>
+    </div>
+  </div>
+</Root>

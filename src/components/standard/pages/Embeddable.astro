@@ -1,0 +1,34 @@
+---
+import Cell from "../bentoCell.astro"
+---
+
+<main id="page-main" class="card flex-1 overflow-y-auto overflow-x-hidden pr-2">
+  <div class="flex h-full flex-wrap gap-4">
+    <Cell id="main-cell" class="min-w-[60vh] min-h-[40vh] bg-base-100">
+        
+        <slot/>
+
+    </Cell>
+  </div>
+</main>
+
+<script>
+  const header = document.getElementById("page-header");
+  const sidebar = document.getElementById("page-sidebar");
+  const main = document.getElementById("page-container");
+  const cell = document.getElementById("main-cell");
+
+  const updateLayout = () => {
+    const fullscreen = window.location.hash === "#fullscreen";
+
+    header.style.display = fullscreen ? "none" : "";
+    sidebar.style.display = fullscreen ? "none" : "";
+    main.style.backgroundColor = fullscreen ? "white" : "";
+    cell.style.backgroundColor = fullscreen ? "transparent" : "";
+  };
+
+  window.addEventListener("hashchange", updateLayout);
+  window.addEventListener("popstate", updateLayout);
+
+  updateLayout();
+</script>

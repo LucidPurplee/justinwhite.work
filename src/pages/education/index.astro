@@ -16,45 +16,46 @@ const achievements = [
     title: "Google IT Automation with Python",
     description: "A course by Google to learn Python automation.",
     date: "2025",
-    customClass: "min-w-[800px] min-h-[400px]",
+    customClass: "min-w-[80vh] min-h-[40vh]",
     tag: "GoogleIT",
-    link: "/awards#GoogleIT",
-    renderLink: "/awards/GoogleIT",
+    link: "/education#GoogleIT",
+    renderLink: "/education/GoogleIT",
   },
   {
     badges: ["Incomplete", "WIP"],
     title: "Google Data Analytics",
     description: "Google's professional certificate program for data analysis.",
     date: "2025",
-    customClass: "min-w-[400px] min-h-[400px]",
+    customClass: "min-w-[40vh] min-h-[40vh]",
     tag: "GoogleAnalytics",
-    link: "/awards#GoogleAnalytics",
-    renderLink: "/awards/GoogleAnalytics",
+    link: "/education#GoogleAnalytics",
+    renderLink: "/education/GoogleAnalytics",
   },
   {
     badges: ["A"],
-    title: "AP Computer Science Principles",
+    title: "AP CSP / Computer Science Principles",
     description: "Advanced Placement course in computer science principles.",
     date: "2024",
-    customClass: "min-w-[400px] min-h-[400px]",
+    customClass: "min-w-[40vh] min-h-[40vh]",
     tag: "APCSP",
-    link: "/awards#APCSP",
-    renderLink: "/awards/APCSP",
+    link: "/education#APCSP",
+    renderLink: "/education/APCSP",
   },
   {
-    badges: ["4"],
+    badges: ["AP 4"],
     title: "AP CSP Exam",
-    description: "Scored 4 on the AP Computer Science Principles exam.",
+    description: "AP Computer Science Principles exam.",
     date: "2024",
-    customClass: "min-w-[800px] min-h-[400px]",
+    customClass: "min-w-[80vh] min-h-[40vh]",
     tag: "APCSPExam",
-    link: "/awards#APCSPExam",
-    renderLink: "/awards/APCSP",
+    modalTitle: "AP Computer Science Principles",
+    link: "/education#APCSPExam",
+    renderLink: "/education/APCSP",
   },
 ];
 ---
 
-<Root title="Awards">
+<Root title="Education - Justinwhite.work">
   <div class="flex flex-col h-screen w-screen bg-base-200 gap-2 p-2">
     <header class="navbar">
       <div class="flex-1 ml-20">
@@ -75,7 +76,7 @@ const achievements = [
                 {/* Modal for this achievement */}
                 <Modal
                   key={i}
-                  title={ach.title}
+                  title={ach.modalTitle ?? ach.title}   // 👈 fallback logic
                   tag={ach.tag ? `#${ach.tag}` : undefined}
                   renderURL={ach.renderLink}
                   client:load
@@ -84,7 +85,7 @@ const achievements = [
                 {/* Achievement card */}
                 <a href={ach.link} class="flex flex-col flex-1">
                   <AnimatedCell
-                    class={`bg-base-100 flex flex-col justify-between p-6 ${ach.customClass}`}
+                    class={`bg-base-100 flex flex-col justify-between p-2 ${ach.customClass}`}
                   >
                     <div class="space-y-4">
                       <h2 class="text-2xl font-bold text-accent flex flex-wrap items-center gap-2">
@@ -113,7 +114,7 @@ const achievements = [
 
           {/* Footer Card */}
           <Cell>
-            <Footer class="min-w-[900px]" />
+            <Footer class="min-w-[90vh]" />
           </Cell>
         </div>
       </main>

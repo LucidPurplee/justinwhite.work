@@ -9,7 +9,9 @@ const achievements = [
     description: "A course by Google to learn Python automation.",
     date: "2025",
     customClass: "min-w-[800px] min-h-[400px]",
-    link: "/awards#GoogleIT",
+    tag: "GoogleIT",
+    link: "/education#GoogleIT",
+    renderLink: "/education/GoogleIT",
   },
   {
     badges: ["Incomplete", "WIP"],
@@ -17,23 +19,30 @@ const achievements = [
     description: "Google's professional certificate program for data analysis.",
     date: "2025",
     customClass: "min-w-[400px] min-h-[400px]",
-    link: "/awards#GoogleAnalytics",
+    tag: "GoogleAnalytics",
+    link: "/education#GoogleAnalytics",
+    renderLink: "/education/GoogleAnalytics",
   },
   {
     badges: ["A"],
-    title: "AP Computer Science Principles",
+    title: "AP CSP / Computer Science Principles",
     description: "Advanced Placement course in computer science principles.",
     date: "2024",
     customClass: "min-w-[400px] min-h-[400px]",
-    link: "/awards#APCSP",
+    tag: "APCSP",
+    link: "/education#APCSP",
+    renderLink: "/education/APCSP",
   },
   {
-    badges: ["4"],
+    badges: ["AP 4"],
     title: "AP CSP Exam",
-    description: "Scored 4 on the AP Computer Science Principles exam.",
+    description: "AP Computer Science Principles exam.",
     date: "2024",
     customClass: "min-w-[800px] min-h-[400px]",
-    link: "/awards#APCSP",
+    tag: "APCSPExam",
+    modalTitle: "AP Computer Science Principles",
+    link: "/education#APCSPExam",
+    renderLink: "/education/APCSP",
   },
 ];
 ---
@@ -113,9 +122,15 @@ const achievements = [
   >
     <!-- Brand -->
     <div class="flex items-center gap-4">
-      <img alt="Logo" src="/daisy-components/logo.svg" class="w-8" />
+      <div class="avatar">
+        <div class="w-24 rounded-full">
+          <img
+            src="/icos/LucidIcon03.jpg"
+          />
+        </div>
+      </div>
       <div>
-        <p class="text-2xl font-bold">Justinwhite.work</p>
+        <p class="text-2xl font-bold">Justin white</p>
         <small>Copyright © 2025 - All rights reserved</small>
       </div>
     </div>
