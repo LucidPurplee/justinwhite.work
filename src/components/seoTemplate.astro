@@ -1,0 +1,24 @@
+---
+import { SEO } from "astro-seo";
+
+const { title, description } = Astro.props;
+
+const defaultTitle = "Justin White – IT Specialist & Software Portfolio";
+const defaultDescription =
+  "Explore Justin White’s IT portfolio at justinwhite.work. Showcasing expertise in information technology, software development, data solutions, and system design with a focus on innovation and problem-solving.";
+---
+
+<SEO
+  title={title || defaultTitle}
+  description={description || defaultDescription}
+  openGraph={{
+    basic: {
+      title: title || defaultTitle,
+      type: "website",
+      image: "/opengraph/thumb.png",
+    },
+  }}
+  extend={{
+    link: [{ rel: "icon", href: "/icon.svg" }],
+  }}
+/>

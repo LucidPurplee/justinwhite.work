@@ -1,136 +1,125 @@
 ---
 const { class: customClass } = Astro.props;
 
-// Server-side achievement data
+const contactItems = [
+  {
+    label: "Email",
+    href: "mailto:jmwhite5807@gmail.com",
+    status: "status-success",
+    tooltip: "jmwhite5807@gmail.com",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/justin-white-505403289/",
+    status: "status-success",
+    tooltip: "www.linkedin.com/in/justin-white-505403289/",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/LucidPurplee",
+    status: "status-accent",
+    tooltip: "github.com/LucidPurplee",
+  },
+];
+
 const achievements = [
   {
     badges: ["Incomplete", "WIP"],
     title: "Google IT Automation with Python",
     description: "A course by Google to learn Python automation.",
     date: "2025",
-    customClass: "min-w-[800px] min-h-[400px]",
     tag: "GoogleIT",
     link: "/education#GoogleIT",
-    renderLink: "/education/GoogleIT",
   },
   {
     badges: ["Incomplete", "WIP"],
     title: "Google Data Analytics",
     description: "Google's professional certificate program for data analysis.",
     date: "2025",
-    customClass: "min-w-[400px] min-h-[400px]",
     tag: "GoogleAnalytics",
     link: "/education#GoogleAnalytics",
-    renderLink: "/education/GoogleAnalytics",
   },
   {
     badges: ["A"],
     title: "AP CSP / Computer Science Principles",
     description: "Advanced Placement course in computer science principles.",
     date: "2024",
-    customClass: "min-w-[400px] min-h-[400px]",
     tag: "APCSP",
     link: "/education#APCSP",
-    renderLink: "/education/APCSP",
   },
   {
     badges: ["AP 4"],
     title: "AP CSP Exam",
     description: "AP Computer Science Principles exam.",
     date: "2024",
-    customClass: "min-w-[800px] min-h-[400px]",
     tag: "APCSPExam",
-    modalTitle: "AP Computer Science Principles",
     link: "/education#APCSPExam",
-    renderLink: "/education/APCSP",
   },
 ];
 ---
 
-<footer
-  class={`bg-base-200 text-base-content text-base rounded ${customClass}`}
->
+<footer class={`bg-base-200 text-base-content text-base rounded ${customClass}`}>
   <!-- Link grid -->
-  <div
-    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6 py-10"
-  >
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 py-10">
+    
     <!-- Education / Awards -->
     <nav class="flex flex-col">
       <h3 class="text-lg footer-title">
         <a href="/awards" class="link link-hover">Education & Awards</a>
       </h3>
       <div class="flex flex-col gap-2 mt-2">
-        {
-          achievements.map((ach, i) => (
-            <a href={ach.link} class="link link-hover" key={i}>
-              {ach.badges.map((b, j) => (
-                <span
-                  key={j}
-                  class={`badge mr-1 mb-1 ${j === ach.badges.length - 1 ? "badge-accent" : "badge-outline"}`}
-                >
-                  {b}
-                </span>
-              ))}
-              {ach.title}
-            </a>
-          ))
-        }
+        {achievements.map((ach, i) => (
+          <a href={ach.link} class="link link-hover" key={i}>
+            {ach.badges.map((b, j) => (
+              <span
+                key={j}
+                class={`badge mr-1 mb-1 ${
+                  j === ach.badges.length - 1 ? "badge-accent" : "badge-outline"
+                }`}
+              >
+                {b}
+              </span>
+            ))}
+            {ach.title}
+          </a>
+        ))}
       </div>
     </nav>
 
-    <!-- Projects -->
-    <nav class="flex flex-col">
-      <h3 class="text-lg footer-title">
-        <a href="/projects" class="link link-hover">Projects</a>
-      </h3>
-      <a href="/projects#web" class="link link-hover">Web Projects</a>
-      <a href="/projects#software" class="link link-hover">Software Projects</a>
-      <a href="/projects#research" class="link link-hover"
-        >Research & Experiments</a
-      >
-      <a href="/projects#opensource" class="link link-hover">Open Source</a>
-    </nav>
-
-    <!-- Links -->
-    <nav class="flex flex-col">
-      <h3 class="text-lg footer-title">
-        <a href="/links" class="link link-hover">Links</a>
-      </h3>
-      <a href="/blog" class="link link-hover">Blog</a>
-      <a href="/about" class="link link-hover">About Me</a>
-      <a href="/contact" class="link link-hover">Contact</a>
-      <a href="/newsletter" class="link link-hover">Newsletter</a>
-    </nav>
-
-    <!-- Community -->
-    <nav class="flex flex-col">
-      <h3 class="text-lg footer-title">
-        <a href="/community" class="link link-hover">Community</a>
-      </h3>
-      <a href="/forums" class="link link-hover">Forums</a>
-      <a href="/discord" class="link link-hover">Discord</a>
-      <a href="/events" class="link link-hover">Events</a>
-      <a href="/mentorship" class="link link-hover">Mentorship</a>
-    </nav>
+    <!-- Contact -->
+    <div>
+      <h3 class="text-lg footer-title">Contact & socials</h3>
+      <ul class="mt-2 flex gap-2 list-none">
+        {contactItems.map((item, i) => (
+          <li key={i}>
+            <div class="tooltip" data-tip={item.tooltip}>
+              <a href={item.href} class="badge gap-2">
+                <span class="inline-grid *:[grid-area:1/1]">
+                  <div class={`status ${item.status} animate-ping`} />
+                  <div class={`status ${item.status}`} />
+                </span>
+                {item.label}
+              </a>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>
 
+  <!-- Divider -->
   <div class="divider"></div>
 
   <!-- Bottom bar -->
-  <aside
-    class="flex flex-col sm:flex-row gap-6 justify-center sm:justify-between items-center px-6 py-4"
-  >
-    <!-- Brand -->
+  <aside class="flex flex-col sm:flex-row gap-6 justify-center sm:justify-between items-center px-6 py-4">
     <div class="flex items-center gap-4">
       <div class="avatar">
         <div class="w-24 rounded-full">
-          <img
-            src="/icos/LucidIcon03.jpg"
-          />
+          <img src="/icos/LucidIcon03.jpg" />
         </div>
       </div>
       <div>
-        <p class="text-2xl font-bold">Justin white</p>
+        <p class="text-2xl font-bold">Justin White</p>
         <small>Copyright © 2025 - All rights reserved</small>
       </div>
     </div>
