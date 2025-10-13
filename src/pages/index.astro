@@ -1,18 +1,18 @@
 ---
-import Root from "../components/root.astro";
-import Sidenav from "../components/standard/sideNavigation.astro";
-import Cell from "../components/standard/bentoCell.astro";
-import AnimatedCell from "../components/standard/animatedBentoCell.astro";
-import Footer from "../components/standard/pageFooter.astro";
-import Header from "../components/standard/headerNavigation.astro"
+import Root from "../components/layouts/coreLayout.astro";
+import Sidenav from "../components/layouts/sideToolbar.astro";
+import Cell from "../components/bento/baseCell.astro";
+import AnimatedCell from "../components/bento/animatedCell.astro";
+import Footer from "../components/layouts/coreFooter.astro";
+import Header from "../components/layouts/headerToolbar.astro"
 
-import Seo from "../components/seoTemplate.astro";
+import Seo from "../components/layouts/coreSEO.astro";
 ---
 
 <Seo title="Home - Justinwhite.work" />
 
-<Root title="Home - Justinwhite.work">
-  <div class="flex flex-col h-screen w-screen bg-base-200 gap-2 p-2">
+<Root title="Home - Justinwhite.work" bgimgurl="/backgrounds/defbg4.png">
+  <div class="flex flex-col h-screen w-screen gap-2 p-2">
     <Header/>
 
     <div class="flex flex-1 gap-2 min-h-0">
@@ -22,17 +22,17 @@ import Seo from "../components/seoTemplate.astro";
 
       <main class="card flex-1 overflow-y-auto overflow-x-hidden pr-2">
         <div class="flex h-full flex-wrap gap-4">
-          <AnimatedCell class="max-w-full min-w-[40vh] min-h-full bg-base-100">
+          <AnimatedCell class="max-w-full min-w-[40vh] min-h-full bg-base-100/70 hover:bg-base-100/90">
             <span> Element </span>
           </AnimatedCell>
 
-          <AnimatedCell class="max-w-full min-w-[40vh] min-h-full bg-base-100">
+          <AnimatedCell class="max-w-full min-w-[40vh] min-h-full bg-base-100/70 hover:bg-base-100/90">
             <span> Element 2 </span>
           </AnimatedCell>
 
           {/* Footer Card */}
-          <Cell class="min-w-2/3 max-w-full">
-            <Footer class="" />
+          <Cell class="bg-transparent">
+            <Footer class="bg-transparent min-w-max" />
           </Cell>
         </div>
       </main>

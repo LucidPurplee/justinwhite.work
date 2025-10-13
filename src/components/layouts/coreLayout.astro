@@ -1,0 +1,32 @@
+---
+import { ClientRouter } from "astro:transitions";
+import "../../styles/global.css";
+const { title, bgimgurl } = Astro.props; 
+
+// 1. Define the URL, falling back to the default
+const finalBgUrl = bgimgurl || '/backgrounds/defbg.png';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+    <ClientRouter />
+  </head>
+  <body
+    class="min-h-screen bg-center bg-cover"
+    style={{ 
+        backgroundImage: `url(${finalBgUrl})`,
+        backgroundRepeat: 'no-repeat', // Added for robustness
+    }}
+  >
+    <slot />
+  </body>
+</html>

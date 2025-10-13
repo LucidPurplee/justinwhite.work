@@ -1,19 +1,19 @@
 ---
 // astro components
-import Root from "../../components/root.astro";
-import Sidenav from "../../components/standard/sideNavigation.astro";
-import Cell from "../../components/standard/bentoCell.astro";
-import AnimatedCell from "../../components/standard/animatedBentoCell.astro";
-import Footer from "../../components/standard/pageFooter.astro";
-import Header from "../../components/standard/headerNavigation.astro"
+import Root from "../../components/layouts/coreLayout.astro";
+import Sidenav from "../../components/layouts/sideToolbar.astro";
+import Cell from "../../components/bento/baseCell.astro";
+import AnimatedCell from "../../components/bento/animatedCell.astro";
+import Footer from "../../components/layouts/coreFooter.astro";
+import Header from "../../components/layouts/headerToolbar.astro"
 
 // react components
-import Modal from "../../components/standard/react/modal.jsx";
+import Modal from "../../components/modal/modal.jsx";
 
 // Server-side achievement data
 const achievements = [
   {
-    badges: ["Incomplete", "WIP"],
+    badges: ["Incomplete", "wip"],
     title: "Google IT Automation with Python",
     description: "A course by Google to learn Python automation.",
     date: "2025",
@@ -23,7 +23,7 @@ const achievements = [
     renderLink: "/education/GoogleIT",
   },
   {
-    badges: ["Incomplete", "WIP"],
+    badges: ["Incomplete", "wip"],
     title: "Google Data Analytics",
     description: "Google's professional certificate program for data analysis.",
     date: "2025",
@@ -43,7 +43,7 @@ const achievements = [
     renderLink: "/education/APCSP",
   },
   {
-    badges: ["AP 4"],
+    badges: ["AP4"],
     title: "AP CSP Exam",
     description: "AP Computer Science Principles exam.",
     date: "2024",
@@ -56,8 +56,8 @@ const achievements = [
 ];
 ---
 
-<Root title="Education - Justinwhite.work">
-  <div class="flex flex-col h-screen w-screen bg-base-200 gap-2 p-2">
+<Root title="Education - Justinwhite.work" bgimgurl="/backgrounds/defbg4.png">
+  <div class="flex flex-col h-screen w-screen gap-2 p-2">
     <Header/>
 
     <div class="flex flex-1 gap-2 min-h-0">
@@ -82,21 +82,21 @@ const achievements = [
                 {/* Achievement card */}
                 <a href={ach.link} class="flex flex-col flex-1">
                   <AnimatedCell
-                    class={`bg-base-100 flex flex-col justify-between p-2 ${ach.customClass}`}
+                    class={`bg-base-100/70 flex flex-col justify-between p-2 hover:bg-base-100/90 ${ach.customClass}`}
                   >
                     <div class="space-y-4">
-                      <h2 class="text-2xl font-bold text-accent flex flex-wrap items-center gap-2">
+                      <h2 class="text-2xl font-bold text-primary flex flex-wrap items-center gap-2">
                         {ach.badges.map((b, j) => (
                           <span
                             key={j}
-                            class={`badge ${j === ach.badges.length - 1 ? "badge-accent" : "badge-outline"}`}
+                            class={`badge ${j === ach.badges.length - 1 ? "badge-primary" : "badge-outline"}`}
                           >
                             {b}
                           </span>
                         ))}
                         {ach.title}
                       </h2>
-                      <p class="text-sm text-secondary-content">
+                      <p class="text-sm text-primary opacity-60">
                         {ach.description}
                       </p>
                     </div>
@@ -110,8 +110,8 @@ const achievements = [
           }
 
           {/* Footer Card */}
-          <Cell>
-            <Footer class="min-w-[90vh]" />
+          <Cell class="bg-transparent">
+            <Footer class="bg-transparent min-w-[90vh]" />
           </Cell>
         </div>
       </main>

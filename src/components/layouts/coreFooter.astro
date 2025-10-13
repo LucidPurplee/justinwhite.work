@@ -17,43 +17,52 @@ const contactItems = [
   {
     label: "GitHub",
     href: "https://github.com/LucidPurplee",
-    status: "status-accent",
+    status: "status-primary",
     tooltip: "github.com/LucidPurplee",
   },
 ];
 
 const achievements = [
   {
-    badges: ["Incomplete", "WIP"],
+    badges: ["Incomplete", "wip"],
     title: "Google IT Automation with Python",
     description: "A course by Google to learn Python automation.",
     date: "2025",
+    customClass: "max-w-full min-w-full md:min-w-[60vh] min-h-[60vh]",
     tag: "GoogleIT",
     link: "/education#GoogleIT",
+    renderLink: "/education/GoogleIT",
   },
   {
-    badges: ["Incomplete", "WIP"],
+    badges: ["Incomplete", "wip"],
     title: "Google Data Analytics",
     description: "Google's professional certificate program for data analysis.",
     date: "2025",
+    customClass: "max-w-full min-w-full md:min-w-[40vh] min-h-[40vh]",
     tag: "GoogleAnalytics",
     link: "/education#GoogleAnalytics",
+    renderLink: "/education/GoogleAnalytics",
   },
   {
-    badges: ["A"],
+    badges: ["A+"],
     title: "AP CSP / Computer Science Principles",
     description: "Advanced Placement course in computer science principles.",
     date: "2024",
+    customClass: "max-w-full min-w-full sm:min-w-[60vh] min-h-[60vh]",
     tag: "APCSP",
     link: "/education#APCSP",
+    renderLink: "/education/APCSP",
   },
   {
-    badges: ["AP 4"],
+    badges: ["AP4"],
     title: "AP CSP Exam",
     description: "AP Computer Science Principles exam.",
     date: "2024",
+    customClass: "max-w-full min-w-full md:min-w-[40vh] min-h-[40vh]",
     tag: "APCSPExam",
+    modalTitle: "AP Computer Science Principles",
     link: "/education#APCSPExam",
+    renderLink: "/education/APCSP",
   },
 ];
 ---
@@ -74,7 +83,7 @@ const achievements = [
               <span
                 key={j}
                 class={`badge mr-1 mb-1 ${
-                  j === ach.badges.length - 1 ? "badge-accent" : "badge-outline"
+                  j === ach.badges.length - 1 ? "badge-primary bg-primary/70 hover:bg-primary/90" : "badge-outline"
                 }`}
               >
                 {b}
@@ -93,7 +102,7 @@ const achievements = [
         {contactItems.map((item, i) => (
           <li key={i}>
             <div class="tooltip" data-tip={item.tooltip}>
-              <a href={item.href} class="badge gap-2">
+              <a href={item.href} class="badge gap-2 bg-base-100/70 hover:bg-base-100/90">
                 <span class="inline-grid *:[grid-area:1/1]">
                   <div class={`status ${item.status} animate-ping`} />
                   <div class={`status ${item.status}`} />
@@ -119,7 +128,7 @@ const achievements = [
         </div>
       </div>
       <div>
-        <p class="text-2xl font-bold">Justin White</p>
+        <p class="text-2xl font-bold">Justin white</p>
         <small>Copyright © 2025 - All rights reserved</small>
       </div>
     </div>
