@@ -1,10 +1,11 @@
 ---
 import Cell from "../bentoCell.astro"
+const { class: customClass } = Astro.props;
 ---
 
-<main id="page-main" class="card flex-1 overflow-y-auto overflow-x-hidden pr-2">
-  <div class="flex h-full flex-wrap gap-4">
-    <Cell id="main-cell" class="min-w-[60vh] min-h-[40vh] bg-base-100">
+<main id="page-main" class="card overflow-y-auto overflow-x-hidden">
+  <div class="">
+    <Cell id="main-cell" class={`min-w-[60vh] min-h-[40vh] bg-base-100 ${customClass}`}>
         
         <slot/>
 

@@ -5,6 +5,7 @@ import Sidenav from "../../components/standard/sideNavigation.astro";
 import Cell from "../../components/standard/bentoCell.astro";
 import AnimatedCell from "../../components/standard/animatedBentoCell.astro";
 import Footer from "../../components/standard/pageFooter.astro";
+import Header from "../../components/standard/headerNavigation.astro"
 
 // react components
 import Modal from "../../components/standard/react/modal.jsx";
@@ -16,7 +17,7 @@ const achievements = [
     title: "Google IT Automation with Python",
     description: "A course by Google to learn Python automation.",
     date: "2025",
-    customClass: "min-w-[80vh] min-h-[40vh]",
+    customClass: "max-w-full min-w-full md:min-w-[60vh] min-h-[60vh]",
     tag: "GoogleIT",
     link: "/education#GoogleIT",
     renderLink: "/education/GoogleIT",
@@ -26,17 +27,17 @@ const achievements = [
     title: "Google Data Analytics",
     description: "Google's professional certificate program for data analysis.",
     date: "2025",
-    customClass: "min-w-[40vh] min-h-[40vh]",
+    customClass: "max-w-full min-w-full md:min-w-[40vh] min-h-[40vh]",
     tag: "GoogleAnalytics",
     link: "/education#GoogleAnalytics",
     renderLink: "/education/GoogleAnalytics",
   },
   {
-    badges: ["A"],
+    badges: ["A+"],
     title: "AP CSP / Computer Science Principles",
     description: "Advanced Placement course in computer science principles.",
     date: "2024",
-    customClass: "min-w-[40vh] min-h-[40vh]",
+    customClass: "max-w-full min-w-full sm:min-w-[60vh] min-h-[60vh]",
     tag: "APCSP",
     link: "/education#APCSP",
     renderLink: "/education/APCSP",
@@ -46,7 +47,7 @@ const achievements = [
     title: "AP CSP Exam",
     description: "AP Computer Science Principles exam.",
     date: "2024",
-    customClass: "min-w-[80vh] min-h-[40vh]",
+    customClass: "max-w-full min-w-full md:min-w-[40vh] min-h-[40vh]",
     tag: "APCSPExam",
     modalTitle: "AP Computer Science Principles",
     link: "/education#APCSPExam",
@@ -57,14 +58,10 @@ const achievements = [
 
 <Root title="Education - Justinwhite.work">
   <div class="flex flex-col h-screen w-screen bg-base-200 gap-2 p-2">
-    <header class="navbar">
-      <div class="flex-1 ml-20">
-        <span class="text-3xl font-bold">Justinwhite.work</span>
-      </div>
-    </header>
+    <Header/>
 
     <div class="flex flex-1 gap-2 min-h-0">
-      <aside class="menu w-20">
+      <aside class="menu w-20 hidden md:block">
         <Sidenav />
       </aside>
 
