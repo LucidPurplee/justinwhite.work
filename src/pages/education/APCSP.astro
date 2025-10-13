@@ -13,7 +13,7 @@ const information = [
     title: "AP CSP / Computer Science Principles",
     description: "Advanced Placement course in computer science principles.",
     date: "2024",
-    customClass: "max-w-1/4 min-w-[20vh] max-h-[40vh]",
+    customClass: "",
     tag: "APCSP",
     link: "/education#APCSP",
     renderLink: "/education/APCSP",
@@ -23,7 +23,7 @@ const information = [
     title: "AP CSP Exam",
     description: "AP Computer Science Principles exam.",
     date: "2024",
-    customClass: "max-w-1/4 min-w-[20vh] max-h-[40vh]",
+    customClass: "",
     tag: "APCSPExam",
     modalTitle: "AP Computer Science Principles",
     link: "/education#APCSPExam",
@@ -37,7 +37,7 @@ const information = [
     id="page-container"
     class="flex flex-col h-screen w-screen gap-2 p-2"
   >
-    <header id="page-header" class="navbar">
+    <header id="page-header" class="">
       <Header id="page-header" />
     </header>
 
@@ -133,12 +133,12 @@ const information = [
           </div>
 
           <!-- Procedural cells stacked vertically -->
-          <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-4 min-w-[40vh]">
             {
               information.map((ach, i) => (
                 <Embeddable
                   key={i}
-                  class={`bg-base-100/70 flex flex-col justify-between ${ach.customClass}`}
+                  class={`bg-base-100/70 hover:bg-base-100/90 flex flex-col justify-between max-w-full ${ach.customClass}`}
                 >
                   <div class="space-y-4">
                     <h2 class="text-2xl font-bold text-primary flex flex-wrap items-center gap-2">
