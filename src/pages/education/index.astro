@@ -82,7 +82,7 @@ const achievements = [
                 {/* Achievement card */}
                 <a href={ach.link} class="flex flex-col flex-1">
                   <AnimatedCell
-                    class={`bg-base-100/70 flex flex-col justify-between p-2 hover:bg-base-100/90 ${ach.customClass}`}
+                    class={`flex flex-col justify-between p-2 bg-base-100/40 hover:bg-base-100/60 ${ach.customClass}`}
                   >
                     <div class="space-y-4">
                       <h2 class="text-2xl font-bold text-primary flex flex-wrap items-center gap-2">
@@ -96,7 +96,7 @@ const achievements = [
                         ))}
                         {ach.title}
                       </h2>
-                      <p class="text-sm text-primary opacity-60">
+                      <p class="text-sm text-primary opacity-80">
                         {ach.description}
                       </p>
                     </div>

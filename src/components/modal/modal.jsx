@@ -54,7 +54,7 @@ export default function Modal({ tag, title, renderURL, children }) {
                   {renderURL && (
                     <a
                       href={renderURL}
-                      className="btn btn-sm btn-ghost"
+                      className="btn btn-sm btn-ghost btn-square"
                       title="Open Fullscreen"
                     >
                       ⛶
@@ -62,7 +62,7 @@ export default function Modal({ tag, title, renderURL, children }) {
                   )}
                   <button
                     onClick={handleClose}
-                    className="btn btn-sm btn-ghost"
+                    className="btn btn-sm btn-ghost btn-square"
                     title="Close"
                   >
                     ✕
