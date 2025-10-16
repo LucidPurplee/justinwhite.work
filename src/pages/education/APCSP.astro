@@ -33,7 +33,10 @@ const information = [
 ---
 
 <Root title="Education - Justinwhite.work" bgimgurl="/backgrounds/defbg4.png">
-  <div id="page-container" class="flex flex-col h-screen w-screen gap-2 p-2">
+  <div
+    id="page-container"
+    class="flex flex-col h-screen w-screen gap-2 p-2 pr-4"
+  >
     <header id="page-header" class="">
       <Header id="page-header" />
     </header>
@@ -47,7 +50,7 @@ const information = [
         <div class="flex h-full min-h-0 gap-4">
           <!-- Main content -->
           <div class="max-w-full">
-            <Embeddable class="min-w-[60vh] h-full transition-all duration-300 ease-in-out bg-base-100/40 hover:bg-base-100/50 ">
+            <Embeddable class="min-w-[60vh] h-full bg-base-100/40">
               <h1 class="text-3xl font-bold">
                 AP Computer Science Principles (AP CSP)
               </h1>
@@ -130,14 +133,12 @@ const information = [
           </div>
 
           <!-- Procedural cells stacked vertically -->
-          <div class="flex flex-col gap-4 min-w-[40vh]">
+          <div class="flex-col gap-4 min-w-[40vh] hidden lg:flex">
             {
               information.map((ach, i) => (
                 <Embeddable
                   key={i}
-                  class={`
-                    transition-all duration-300 ease-in-out hover:border-solid border-base-300/0 hover:border-4 border-0 border-base-300/20 bg-base-100/40 hover:bg-base-100/60 
-                    flex flex-col justify-between max-w-full ${ach.customClass}`}
+                  class={`bg-base-100/40 flex flex-col justify-between max-w-full ${ach.customClass}`}
                 >
                   <div class="space-y-4">
                     <h2 class="text-2xl font-bold text-primary flex flex-wrap items-center gap-2">

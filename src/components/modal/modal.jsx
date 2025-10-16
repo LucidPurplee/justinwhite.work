@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Modal({ tag, title, renderURL, children }) {
+export default function Modal({
+  tag,
+  title,
+  renderURL,
+  fullscreenNewTab,
+  children,
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   // Sync open state with hash
@@ -54,6 +60,8 @@ export default function Modal({ tag, title, renderURL, children }) {
                   {renderURL && (
                     <a
                       href={renderURL}
+                      target={fullscreenNewTab ? "_blank" : undefined}
+                      rel={fullscreenNewTab ? "noopener noreferrer" : undefined}
                       className="btn btn-sm btn-ghost btn-square"
                       title="Open Fullscreen"
                     >

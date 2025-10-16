@@ -5,60 +5,18 @@ import Sidenav from "../../components/layouts/sideToolbar.astro";
 import Cell from "../../components/bento/baseCell.astro";
 import AnimatedCell from "../../components/bento/animatedCell.astro";
 import Footer from "../../components/layouts/coreFooter.astro";
-import Header from "../../components/layouts/headerToolbar.astro"
+import Header from "../../components/layouts/headerToolbar.astro";
 
 // react components
 import Modal from "../../components/modal/modal.jsx";
 
 // Server-side achievement data
-const achievements = [
-  {
-    badges: ["Incomplete", "wip"],
-    title: "Google IT Automation with Python",
-    description: "A course by Google to learn Python automation.",
-    date: "2025",
-    customClass: "max-w-full min-w-full md:min-w-[60vh] min-h-[60vh]",
-    tag: "GoogleIT",
-    link: "/education#GoogleIT",
-    renderLink: "/education/GoogleIT",
-  },
-  {
-    badges: ["Incomplete", "wip"],
-    title: "Google Data Analytics",
-    description: "Google's professional certificate program for data analysis.",
-    date: "2025",
-    customClass: "max-w-full min-w-full md:min-w-[40vh] min-h-[40vh]",
-    tag: "GoogleAnalytics",
-    link: "/education#GoogleAnalytics",
-    renderLink: "/education/GoogleAnalytics",
-  },
-  {
-    badges: ["A+"],
-    title: "AP CSP / Computer Science Principles",
-    description: "Advanced Placement course in computer science principles.",
-    date: "2024",
-    customClass: "max-w-full min-w-full sm:min-w-[60vh] min-h-[60vh]",
-    tag: "APCSP",
-    link: "/education#APCSP",
-    renderLink: "/education/APCSP",
-  },
-  {
-    badges: ["AP4"],
-    title: "AP CSP Exam",
-    description: "AP Computer Science Principles exam.",
-    date: "2024",
-    customClass: "max-w-full min-w-full md:min-w-[40vh] min-h-[40vh]",
-    tag: "APCSPExam",
-    modalTitle: "AP Computer Science Principles",
-    link: "/education#APCSPExam",
-    renderLink: "/education/APCSP",
-  },
-];
+import achievements from "../../components/achievements";
 ---
 
 <Root title="Education - Justinwhite.work" bgimgurl="/backgrounds/defbg4.png">
   <div class="flex flex-col h-screen w-screen gap-2 p-2">
-    <Header/>
+    <Header />
 
     <div class="flex flex-1 gap-2 min-h-0">
       <aside class="menu w-20 hidden md:block">
@@ -70,21 +28,26 @@ const achievements = [
           {
             achievements.map((ach, i) => (
               <div key={i} class={`flex flex-col flex-1 ${ach.customClass}`}>
-                {/* Modal for this achievement */}
-                <Modal
-                  key={i}
-                  title={ach.modalTitle ?? ach.title}   // 👈 fallback logic
-                  tag={ach.tag ? `#${ach.tag}` : undefined}
-                  renderURL={ach.renderLink}
-                  client:load
-                />
-
                 {/* Achievement card */}
-                <a href={ach.link} class="flex flex-col flex-1">
+                 {/* Modal for this achievement */}
+                  {ach.useModal && (<Modal
+                    key={i}
+                    title={ach.modalTitle ?? ach.title}   // 👈 fallback logic
+                    tag={ach.tag ? `#${ach.tag}` : undefined}
+                    renderURL={ach.renderLink}
+                    fullscreenNewTab={ach.useNewTab}
+                    client:load
+                  />)}
+                <a
+                  href={ach.useModal ? ach.link : ach.renderLink}
+                  target={ach.useNewTab ? "_blank" : undefined}
+                  rel={ach.useNewTab ? "noopener noreferrer" : undefined}
+                  class="flex flex-col flex-1"
+                >
                   <AnimatedCell
                     class={`flex flex-col justify-between p-2 bg-base-100/40 hover:bg-base-100/60 ${ach.customClass}`}
                   >
-                    <div class="space-y-4">
+                    <div class="space-y-4 flex-1">
                       <h2 class="text-2xl font-bold text-primary flex flex-wrap items-center gap-2">
                         {ach.badges.map((b, j) => (
                           <span
@@ -96,11 +59,23 @@ const achievements = [
                         ))}
                         {ach.title}
                       </h2>
+
                       <p class="text-sm text-primary opacity-80">
                         {ach.description}
                       </p>
                     </div>
-                    <span class="text-xs font-light text-gray-500 mt-auto">
+
+                    {ach.imageLink && (
+                      <div class="p-4 rounded-3xl w-full max-h-48 bg-base-100/10 border-2 border-base-100/10 flex justify-center items-center overflow-hidden">
+                        <img
+                          src={ach.imageLink}
+                          alt={`${ach.title} certificate`}
+                          class={`max-h-full max-w-full rounded-2xl outline-2 outline-base-100/20 ${ach.imageStyle || ""}`}
+                        />
+                      </div>
+                    )}
+
+                    <span class="text-xs font-light text-gray-500 mt-3">
                       {ach.date}
                     </span>
                   </AnimatedCell>
@@ -110,8 +85,8 @@ const achievements = [
           }
 
           {/* Footer Card */}
-          <Cell class="bg-transparent">
-            <Footer class="bg-transparent min-w-[90vh]" />
+          <Cell class="bg-transparent max-w-full">
+            <Footer class="bg-transparent min-w-[90vw] max-w-full" />
           </Cell>
         </div>
       </main>

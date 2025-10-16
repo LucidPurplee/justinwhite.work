@@ -22,87 +22,60 @@ const contactItems = [
   },
 ];
 
-const achievements = [
-  {
-    badges: ["Incomplete", "wip"],
-    title: "Google IT Automation with Python",
-    description: "A course by Google to learn Python automation.",
-    date: "2025",
-    customClass: "max-w-full min-w-full md:min-w-[60vh] min-h-[60vh]",
-    tag: "GoogleIT",
-    link: "/education#GoogleIT",
-    renderLink: "/education/GoogleIT",
-  },
-  {
-    badges: ["Incomplete", "wip"],
-    title: "Google Data Analytics",
-    description: "Google's professional certificate program for data analysis.",
-    date: "2025",
-    customClass: "max-w-full min-w-full md:min-w-[40vh] min-h-[40vh]",
-    tag: "GoogleAnalytics",
-    link: "/education#GoogleAnalytics",
-    renderLink: "/education/GoogleAnalytics",
-  },
-  {
-    badges: ["A+"],
-    title: "AP CSP / Computer Science Principles",
-    description: "Advanced Placement course in computer science principles.",
-    date: "2024",
-    customClass: "max-w-full min-w-full sm:min-w-[60vh] min-h-[60vh]",
-    tag: "APCSP",
-    link: "/education#APCSP",
-    renderLink: "/education/APCSP",
-  },
-  {
-    badges: ["AP4"],
-    title: "AP CSP Exam",
-    description: "AP Computer Science Principles exam.",
-    date: "2024",
-    customClass: "max-w-full min-w-full md:min-w-[40vh] min-h-[40vh]",
-    tag: "APCSPExam",
-    modalTitle: "AP Computer Science Principles",
-    link: "/education#APCSPExam",
-    renderLink: "/education/APCSP",
-  },
-];
+// Server-side achievement data
+import achievements from "../../components/achievements";
 ---
-
-<footer class={`bg-base-200 text-base-content text-base rounded ${customClass}`}>
-  <!-- Link grid -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 py-10">
+<footer
+  class={`bg-base-200 text-base-content text-sm rounded ${customClass} w-full`}
+>
+  {/* Link grid */}
+  <div class="flex flex-col gap-8 px-4 py-8 sm:grid sm:grid-cols-2 lg:grid-cols-3">
     
-    <!-- Education / Awards -->
+    {/* Education / Awards */}
     <nav class="flex flex-col">
-      <h3 class="text-lg footer-title">
+      <h3 class="text-base sm:text-lg footer-title mb-2">
         <a href="/awards" class="link link-hover">Education & Awards</a>
       </h3>
-      <div class="flex flex-col gap-2 mt-2">
+      <div class="flex flex-col gap-3">
         {achievements.map((ach, i) => (
-          <a href={ach.link} class="link link-hover" key={i}>
+          <a
+            href={ach.useModal ? ach.link : ach.renderLink}
+            target={ach.useNewTab ? "_blank" : undefined}
+            rel={ach.useNewTab ? "noopener noreferrer" : undefined}
+            class="link link-hover flex flex-wrap items-center gap-1"
+            key={i}
+          >
             {ach.badges.map((b, j) => (
               <span
                 key={j}
-                class={`badge mr-1 mb-1 ${
-                  j === ach.badges.length - 1 ? "badge-primary bg-primary/70 hover:bg-primary/90" : "badge-outline"
+                class={`badge ${
+                  j === ach.badges.length - 1
+                    ? "badge-primary bg-primary/70 hover:bg-primary/90"
+                    : "badge-outline"
                 }`}
               >
                 {b}
               </span>
             ))}
-            {ach.title}
+            <span class="truncate text-sm md:text-[1rem]">{ach.title}</span>
           </a>
         ))}
       </div>
     </nav>
 
-    <!-- Contact -->
+    {/* Contact */}
     <div>
-      <h3 class="text-lg footer-title">Contact & socials</h3>
-      <ul class="mt-2 flex gap-2 list-none">
+      <h3 class="text-base sm:text-lg footer-title mb-2">
+        Contact & socials
+      </h3>
+      <ul class="flex flex-wrap gap-2">
         {contactItems.map((item, i) => (
           <li key={i}>
             <div class="tooltip" data-tip={item.tooltip}>
-              <a href={item.href} class="badge gap-2 bg-base-100/70 hover:bg-base-100/90">
+              <a
+                href={item.href}
+                class="badge gap-2 bg-base-100/70 hover:bg-base-100/90"
+              >
                 <span class="inline-grid *:[grid-area:1/1]">
                   <div class={`status ${item.status} animate-ping`} />
                   <div class={`status ${item.status}`} />
@@ -116,20 +89,22 @@ const achievements = [
     </div>
   </div>
 
-  <!-- Divider -->
-  <div class="divider"></div>
+  {/* Divider */}
+  <div class="divider my-4"></div>
 
-  <!-- Bottom bar -->
-  <aside class="flex flex-col sm:flex-row gap-6 justify-center sm:justify-between items-center px-6 py-4">
-    <div class="flex items-center gap-4">
+  {/* Bottom bar */}
+  <aside
+    class="flex flex-col px-4 py-4 text-center sm:text-left"
+  >
+    <div class="flex flex-col sm:flex-row items-center gap-3">
       <div class="avatar">
-        <div class="w-24 rounded-full">
+        <div class="w-16 sm:w-20 rounded-full">
           <img src="/icos/LucidIcon03.jpg" />
         </div>
       </div>
       <div>
-        <p class="text-2xl font-bold">Justin white</p>
-        <small>Copyright © 2025 - All rights reserved</small>
+        <p class="text-lg sm:text-xl font-bold">Justin White</p>
+        <small>© 2025 - All rights reserved</small>
       </div>
     </div>
   </aside>
