@@ -25,7 +25,7 @@ const CensoredBio = () => {
     <Card
       title="First Last"
       subtitle="hmu@site.site"
-      image="https://placehold.co/400x400/png"
+      image="https://placehold.co/100x100/png"
       className="w-full"
       visibleChildren={1}
     >
