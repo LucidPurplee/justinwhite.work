@@ -1,0 +1,57 @@
+---
+export const prerender = false
+import Root from "../components/layouts/BaseLayout.astro";
+import Seo from "../components/layouts/BaseSEO.astro";
+
+import Bio from "../components/layouts/controlPane/bioCard.jsx";
+import Categories from "../components/layouts/controlPane/categories.jsx";
+import MDViewport from "../components/layouts/viewports/document.jsx";
+
+
+const url = new URL(Astro.request.url);
+const sourceParam = url.searchParams.get("source");
+
+if (!sourceParam || sourceParam.trim() === "") {
+    console.warn("REDIRECT: Source parameter is missing or empty.");
+    return Astro.redirect("/");
+}
+
+console.log(`[Astro] SourceParam read: "${sourceParam}"`);
+
+let sourceLocation: string;
+
+if (sourceParam.startsWith("http://") || sourceParam.startsWith("https://")) {
+  sourceLocation = sourceParam;
+}
+else if (sourceParam.startsWith("/docs/")) {
+  sourceLocation = sourceParam;
+}
+else {
+  sourceLocation = `/docs/${sourceParam}.md`;
+}
+
+---
+
+<Seo title="Home - Justinwhite.work" />
+
+<Root title="Home - Justinwhite.work">
+  <div class="h-screen w-screen overflow-hidden p-2 md:p-4 flex flex-row gap-2 md:gap-4" data-theme="prime100">
+
+    <aside
+      class="flex flex-col items-center min-h-full flex-1 md:max-w-96 sticky top-0 overflow-y-auto gap-2 md:gap-4 pb-[16%]" transition:persist
+    >
+      <div class="sticky top-0 z-10">
+        <Bio client:load />
+      </div>
+      <Categories client:load />
+    </aside>
+
+    <MDViewport
+      sourceLocation={sourceLocation}
+      title="Document"
+      subtitle={sourceParam + ".md" || "nan"}
+      client:only="react"
+    />
+
+  </div>
+</Root>

@@ -1,41 +1,37 @@
 ---
-import Root from "../components/layouts/coreLayout.astro";
-import Sidenav from "../components/layouts/sideToolbar.astro";
-import Cell from "../components/bento/baseCell.astro";
-import AnimatedCell from "../components/bento/animatedCell.astro";
-import Footer from "../components/layouts/coreFooter.astro";
-import Header from "../components/layouts/headerToolbar.astro"
+import Root from "../components/layouts/BaseLayout.astro";
+import Seo from "../components/layouts/BaseSEO.astro";
 
-import Seo from "../components/layouts/coreSEO.astro";
+import Bio from "../components/layouts/controlPane/bioCard.jsx";
+import Categories from "../components/layouts/controlPane/categories.jsx";
+import Card from "../components/library/card.jsx";
+import MDViewport from "../components/layouts/viewports/document.jsx";
+import IFViewport from "../components/layouts/viewports/preview.jsx";
 ---
 
 <Seo title="Home - Justinwhite.work" />
 
-<Root title="Home - Justinwhite.work" bgimgurl="/backgrounds/defbg4.png">
-  <div class="flex flex-col h-screen w-screen gap-2 p-2">
-    <Header/>
+<Root title="Home - Justinwhite.work">
+  <div class="h-screen w-screen overflow-hidden p-2 md:p-4 flex flex-row gap-2 md:gap-4" data-theme="prime100">
 
-    <div class="flex flex-1 gap-2 min-h-0">
-      <aside class="menu w-20 hidden md:block">
-        <Sidenav />
-      </aside>
+    <aside
+  class="flex flex-col items-center min-h-full flex-1 md:max-w-96 sticky top-0 max-h-screen overflow-hidden gap-2 md:gap-4"
+  transition:persist
+>
+  <Bio client:load />
 
-      <main class="card flex-1 overflow-y-auto overflow-x-hidden pr-2">
-        <div class="flex h-full flex-wrap gap-4">
-          <Cell class="max-w-full min-w-[40vh] min-h-full bg-base-100/40">
-            <span> Element </span>
-          </Cell>
+  <div class="overflow-y-auto flex-1 w-full pb-[16%]">
+    <Categories client:load />
+  </div>
+</aside>
 
-          <AnimatedCell class="max-w-full min-w-[40vh] min-h-full bg-base-100/40 hover:bg-base-100/60">
-            <span> Element 2 </span>
-          </AnimatedCell>
+    <MDViewport
+      sourceLocation="/docs/home.md"
+      title="Document"
+      subtitle="home.md"
+      className="md:flex hidden"
+      client:only="react"
+    />
 
-          {/* Footer Card */}
-          <Cell class="bg-transparent">
-            <Footer class="bg-transparent min-w-max" />
-          </Cell>
-        </div>
-      </main>
-    </div>
   </div>
 </Root>

@@ -13,20 +13,10 @@ const finalBgUrl = bgimgurl || '/backgrounds/defbg.png';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
     <title>{title}</title>
     <ClientRouter />
   </head>
-  <body
-    class="min-h-screen bg-center bg-cover"
-    style={{ 
-        backgroundImage: `url(${finalBgUrl})`,
-        backgroundRepeat: 'no-repeat', // Added for robustness
-    }}
-  >
+  <body>
     <slot />
   </body>
 </html>

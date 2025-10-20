@@ -1,0 +1,12 @@
+import React from 'react';
+
+const Blurb = ({ Header, Body }) => {
+  return (
+    <div className="p-2 rounded-lg">
+        <h3 className="font-semibold text-base opacity-80">{Header}</h3>
+        <p className="text-sm opacity-40">{Body}</p>
+  </div>
+  );
+};
+
+export default Blurb;
