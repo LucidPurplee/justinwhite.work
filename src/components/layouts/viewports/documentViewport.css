@@ -38,10 +38,10 @@
 
 .md-content p {
     margin: 0 0 1rem 0 !important;
-    color: #e5e7eb !important;
+    color: rgba(229, 231, 235, 0.92) !important;
 }
 
-.md-content p img {
+.md-content img {
     max-width: calc(100% + 32px);
     height: auto;
     max-height: 800px;
@@ -96,11 +96,17 @@
 
 .md-content strong {
     font-weight: 700 !important;
-    color: #f9fafb !important;
+    color: rgba(229, 231, 235, 1) !important;
+}
+
+.md-content p strong {
+    font-weight: 700 !important;
+    color: rgba(229, 231, 235, 1) !important;
 }
 
 .md-content em {
     font-style: italic !important;
+    color: rgba(229, 231, 235, 0.72) !important;
 }
 
 .md-content a {

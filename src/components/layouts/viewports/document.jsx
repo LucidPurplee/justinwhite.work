@@ -205,28 +205,50 @@ const MarkdownRenderer = ({ sourceLocation, title, subtitle, className }) => {
     </>
   );
 
-  const renderContentArea = (message) => (
-    <div className="flex-1 flex flex-col overflow-hidden gap-4">
-      <div
-        className="p-8 rounded-lg w-full max-h-full flex-1 shadow-xl"
-        data-theme="prime200"
-      >
-        <p className="text-yellow-500 font-semibold">{message}</p>
-        <span class="loading loading-spinner loading-xl"></span>
+  const renderContentArea = (
+    message,
+    additional = "",
+    className = "",
+    showReloadOptions = false,
+    showLoader = true
+  ) => (
+    <div
+      className={`flex-1 flex flex-col overflow-hidden gap-4 hidden md:block bg-transparent`}
+      data-theme="prime200"
+    >
+      <div className={`p-8 rounded-lg w-full h-full flex flex-col items-center justify-center shadow-xl bg-base-100`}>
+        {showLoader && (
+          <span className={`loading loading-spinner loading-xl my-4 text-base-content ${className}`}></span>
+        )}
+        <h1 className={`font-semibold text-base opacity-80 ${className}`}>
+              {message}
+        </h1>
+        <p className="text-sm opacity-60">{additional}</p>
+        {showReloadOptions && (
+          <button
+            className="mt-6 btn border border-white/20 inset-shadow-[1px_1px_2px_-.8px_rgba(255,255,255,.72)]"
+            onClick={() => window.location.reload()}
+          >
+            Retry
+          </button>
+        )}
       </div>
-      <div className="skeleton bg-white/1 h-16 w-full"></div>
+      <div className="skeleton bg-w- h-16 w-full"></div>
     </div>
   );
 
   if (isLoading) {
-    return renderContentArea("Loading document...");
+    return renderContentArea("loading document from file");
   }
 
   if (!sourceLocation || hasFetchError || !markdownContent || hasRenderError) {
-    const message = hasRenderError 
-      ? "Document could not be rendered"
-      : "Document could not be found";
-    return renderContentArea(message);
+    const docname = subtitle ? `"${subtitle}"` : "document";
+    const docinv = subtitle ? `"${subtitle}"` : "";
+    return renderContentArea(
+      hasRenderError ? `Failed to render ${docname}` : `Document ${docinv} does not exist!`, 
+      hasRenderError ? "Report this error please!" : "Check the url for a typo!", 
+      "text-warning", true, false
+    );
   }
 
   return (
