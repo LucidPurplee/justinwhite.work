@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TbChevronUp, TbChevronDown } from "react-icons/tb";
 
-// 1. Create a wrapper component
+// 1. Create a wrapper component (unchanged)
 const CardContentWrapper = ({ link, linkCreatesTab = true, children }) => {
   if (link) {
     // If a link exists, render an <a> tag
@@ -30,29 +30,45 @@ const Card = ({
   subtitle, // optional
   chips = [], // optional
   image, // optional
-  link, // NEW PROP: URL for the primary card content
+  link, // URL for the primary card content
   linkCreatesTab = true, // if true link will open a new tab, otherwise it won't
-  visibleChildren = 0,
-  children, // Children are treated as collapsible sections
+  visibleChildren = 0, // Children visible at the top
+  visibleChildrenBottom = 0, // NEW PROP: Children visible at the bottom
+  children, // Children are treated as sections
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Convert children to array and check if we have sections
+  // Convert children to array
   const sections = React.Children.toArray(children);
   const totalSections = sections.length;
-  const hasSections = totalSections > 0;
-
-  // Determine how many children should be visible when collapsed
-  const sectionsAlwaysVisible = Math.min(
+  
+  // --- Section Index Calculation ---
+  
+  // 1. Top visible sections
+  const sectionsAlwaysVisibleTop = Math.min(
     Math.max(0, visibleChildren),
     totalSections
   );
+  
+  // 2. Bottom visible sections (must leave space for top sections)
+  // Ensure we don't count the same children as top and bottom
+  const maxBottom = totalSections - sectionsAlwaysVisibleTop;
+  const sectionsAlwaysVisibleBottom = Math.min(
+    Math.max(0, visibleChildrenBottom),
+    maxBottom
+  );
+  
+  // 3. Collapsible sections (the rest)
+  const collapsibleSectionsCount = 
+    totalSections - sectionsAlwaysVisibleTop - sectionsAlwaysVisibleBottom;
 
-  // The number of sections that are collapsible (hidden when collapsed)
-  const collapsibleSectionsCount = totalSections - sectionsAlwaysVisible;
+  // Indices for slicing
+  const topEndIndex = sectionsAlwaysVisibleTop;
+  const bottomStartIndex = totalSections - sectionsAlwaysVisibleBottom;
+  const collapsibleStartIndex = topEndIndex;
+  const collapsibleEndIndex = bottomStartIndex;
 
   // Only allow toggle if there are hidden sections to show AND no primary link is set.
-  // We should NOT allow the expand action if the card is a clickable link.
   const canToggle = collapsibleSectionsCount > 0 && !link;
 
   const toggleExpand = () => {
@@ -63,7 +79,7 @@ const Card = ({
   };
 
   return (
-    // Applied base styling and padding for the card wrapper
+    // Applied base styling and padding for the card wrapper (unchanged)
     <div
       className={`
       p-2 rounded-xl transition-all duration-400 ease-in-out
@@ -73,9 +89,8 @@ const Card = ({
       `}
     >
       
-      {/* 2. Use the wrapper component */}
+      {/* 2. Primary Card Content/Link Area (unchanged) */}
       <CardContentWrapper link={link} linkCreatesTab={linkCreatesTab}>
-        {/* Everything inside here is the clickable/primary content area */}
         <div className="flex items-center gap-4">
           {image && (
             <div className="flex-shrink-0">
@@ -115,8 +130,8 @@ const Card = ({
           </div>
         </div>
       
-        {/* 3. Conditional Toggle Button (Only if no link) */}
-        {collapsibleSectionsCount > 0 && !link && (
+        {/* 3. Conditional Toggle Button (Only if no link and sections are collapsible) */}
+        {canToggle && ( // Use the new 'canToggle' logic
           <button
             onClick={toggleExpand}
             className="btn btn-circle transition-colors duration-400 flex-shrink-0"
@@ -128,13 +143,13 @@ const Card = ({
         )}
       </CardContentWrapper>
 
-      {/* 4. The rest of the card structure remains the same */}
-
-      {/* Always Visible Children (sectionsAlwaysVisible > 0) */}
-      {sectionsAlwaysVisible > 0 && (
-        <div className="mt-4">
-          {sections.slice(0, sectionsAlwaysVisible).map((section, index) => (
-            <div key={`visible-${index}`} className="">
+      {/* --- 4. Content Sections --- */}
+      
+      {/* Always Visible Children (TOP) */}
+      {sectionsAlwaysVisibleTop > 0 && (
+        <div className="mt-2 space-y-2"> {/* Added space-y-2 for spacing between sections */}
+          {sections.slice(0, topEndIndex).map((section, index) => (
+            <div key={`visible-top-${index}`} className="">
               {React.isValidElement(section)
                 ? React.cloneElement(section, { sectionIndex: index })
                 : section}
@@ -143,23 +158,22 @@ const Card = ({
         </div>
       )}
 
-      {/* Collapsible Sections Content */}
+      {/* Collapsible Sections Content (MIDDLE) */}
       {collapsibleSectionsCount > 0 && !link && (
         <div
           id="rich-card-sections"
           className="overflow-hidden transition-all duration-200 ease-in-out"
           style={{
-            maxHeight: isExpanded ? "500px" : "0px",
-            paddingTop: isExpanded ? "0px" : "0px",
+            maxHeight: isExpanded ? "500px" : "0px", // Simplified maxHeight transition
             overflowY: "auto",
             overflowX: "hidden",
           }}
         >
-          <div className="">
+          <div className="space-y-2"> {/* Added space-y-2 for spacing between sections */}
             {sections
-              .slice(sectionsAlwaysVisible)
+              .slice(collapsibleStartIndex, collapsibleEndIndex)
               .map((section, index) => {
-                const originalIndex = sectionsAlwaysVisible + index;
+                const originalIndex = collapsibleStartIndex + index;
                 
                 return (
                   <div
@@ -183,6 +197,26 @@ const Card = ({
           </div>
         </div>
       )}
+      
+      {/* Always Visible Children (BOTTOM) */}
+      {sectionsAlwaysVisibleBottom > 0 && (
+        <div 
+          className="mt-2 space-y-2"
+        >
+          {/* Note: This map starts from 'bottomStartIndex' */}
+          {sections.slice(bottomStartIndex).map((section, index) => {
+            const originalIndex = bottomStartIndex + index;
+            return (
+              <div key={`visible-bottom-${originalIndex}`} className="">
+                {React.isValidElement(section)
+                  ? React.cloneElement(section, { sectionIndex: originalIndex })
+                  : section}
+              </div>
+            );
+          })}
+        </div>
+      )}
+
     </div>
   );
 };

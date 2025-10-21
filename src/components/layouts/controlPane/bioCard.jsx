@@ -9,10 +9,19 @@ const RealBio = () => {
       image="/icos/Profile.png"
       className="w-full bg-base-100"
       visibleChildren={1}
+      visibleChildrenBottom={1}
     >
       <Blurb Header="About me" Body="This should always be visible" />
       <Blurb Header="Section 2" Body="This should hide/show on click" />
-      
+
+      <div className="w-full flex flex-row">
+        <a
+          href="/"
+          className="badge badge-sm border border-white/20 inset-shadow-[1px_1px_2px_-.8px_rgba(255,255,255,.72)] md:flex hidden"
+        >
+          home
+        </a>
+      </div>
     </Card>
   );
 };

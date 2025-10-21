@@ -171,7 +171,7 @@ const MarkdownRenderer = ({ sourceLocation, title, subtitle, className }) => {
       </div>
 
       <Card title={title} subtitle={subtitle} className="w-full">
-        <div className="pb-1 px-2 flex flex-row gap-2">
+        <div className="py-1 px-2 flex flex-row gap-2">
           <button 
             className="btn border border-white/20" 
             onClick={handleDownload}
