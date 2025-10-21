@@ -61,6 +61,12 @@ I'm stacking certifications, tinkering with tech, and learning as much as I can 
 
 ---
 
+## This website 🪴
+
+**Frontend Stack:** React, Tailwind, DaisyUI, Astro,  and react-markdown
+
+---
+
 ## Fun Stuff & Achievements 🏆
 
 - Managed a **4.3 GPA** senior year of high school (5.0 scale) 🎓  
@@ -71,14 +77,14 @@ I'm stacking certifications, tinkering with tech, and learning as much as I can 
 
 ---
 
-## Site Map 🗺️
+## Site Map 🗺️ (PLACEHOLDER!)
 
 Quick links to everything I'm working on: 👇
 
-- **Projects** 🛠️ – Portfolio pieces, experiments, and side builds
-- **Blog** 📝 – Thoughts, tutorials, and learning notes
-- **Pets** 🐾 – Meet the crew
-- **Interior Design** 🏠 – My most expensive hobby
-- **Tools & Resources** 🧰 – Stuff I use and recommend
+- **Category 1** 🛠️ – Item 1, Item 2, Item 3 and Item 4
+- **Category 2** 📝 – Item 1, Item 2 and Item 3
+- **Category 3** 🐾 – Item 1, Item 2, Item 3, Item 4 and Item 5
+- **Category 4** 🏠 – Item 1 and Item 2
+- **Category 5** 🧰 – Item 1
 
-> Basically, this is a live hub for exploring all the things I do. 🎯
+> Lorem ipsum or something

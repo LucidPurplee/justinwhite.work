@@ -4,17 +4,13 @@ import Card from "../../library/card.jsx";
 // --- Full-Screen Modal Always Visible on Mobile ---
 const Modal = ({ title, children }) => {
   const handleCloseAndNavigate = () => {
-    window.location.href = '/';
+    window.location.href = "/";
   };
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden bg-base-100"
-    >
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden bg-base-100">
       <div className="w-full h-full flex flex-col p-4">
-        <div className="flex-1 flex flex-col overflow-hidden">
-          {children}
-        </div>
+        <div className="flex-1 flex flex-col overflow-hidden">{children}</div>
         <button
           onClick={handleCloseAndNavigate}
           className="btn btn-lg w-full max-w-full border border-white/20 mt-4"
@@ -29,7 +25,13 @@ const Modal = ({ title, children }) => {
 /**
  * Renders an HTML page inside an iframe, handling missing content and fetch errors.
  */
-const IframeRenderer = ({ sourceLocation, liveLocation, title, subtitle, className }) => {
+const IframeRenderer = ({
+  sourceLocation,
+  liveLocation,
+  title,
+  subtitle,
+  className,
+}) => {
   const [isDocumentReachable, setIsDocumentReachable] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [hasFetchError, setHasFetchError] = useState(false);
@@ -50,7 +52,9 @@ const IframeRenderer = ({ sourceLocation, liveLocation, title, subtitle, classNa
 
       try {
         const response = await fetch(sourceLocation);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        console.log(sourceLocation)
+        if (!response.ok)
+          throw new Error(`HTTP error! status: ${response.status}`);
         setIsDocumentReachable(true);
       } catch (error) {
         console.error("Document reachability check failed:", error);
@@ -72,13 +76,14 @@ const IframeRenderer = ({ sourceLocation, liveLocation, title, subtitle, classNa
   };
 
   const handleLivePage = () => {
-    if (liveLocation) window.open(liveLocation, "_blank", "noopener,noreferrer");
+    if (liveLocation)
+      window.open(liveLocation, "_blank", "noopener,noreferrer");
   };
 
   const renderPreviewView = (isMobile = false) => (
     <>
       <div
-        className={`p-1 rounded-lg w-full shadow-xl overflow-hidden ${isMobile ? 'flex-1 min-h-0' : 'max-h-full flex-1'}`}
+        className={`p-1 rounded-lg w-full shadow-xl overflow-hidden ${isMobile ? "flex-1 min-h-0" : "max-h-full flex-1"}`}
         data-theme="prime200"
       >
         <iframe
@@ -96,11 +101,17 @@ const IframeRenderer = ({ sourceLocation, liveLocation, title, subtitle, classNa
           <button className="btn border border-white/20" onClick={handleReload}>
             Reload
           </button>
-          <button className="btn border border-white/20" onClick={handleViewRaw}>
+          {liveLocation != sourceLocation && (<button
+            className="btn border border-white/20"
+            onClick={handleViewRaw}
+          >
             View Raw
-          </button>
+          </button>)}
           {liveLocation && (
-            <button className="btn border border-white/20" onClick={handleLivePage}>
+            <button
+              className="btn border border-white/20"
+              onClick={handleLivePage}
+            >
               Live Page
             </button>
           )}
@@ -109,15 +120,35 @@ const IframeRenderer = ({ sourceLocation, liveLocation, title, subtitle, classNa
     </>
   );
 
-  const renderContentArea = (message) => (
-    <div className="flex-1 flex flex-col overflow-hidden gap-4 hidden md:block">
-      <div
-        className="p-8 rounded-lg w-full max-h-full flex-1 shadow-xl"
-        data-theme="prime200"
-      >
-        <p className="text-yellow-500 font-semibold">{message}</p>
+  const renderContentArea = (
+    message,
+    additional = "",
+    className = "",
+    showReloadOptions = false,
+    showLoader = true
+  ) => (
+    <div
+      className={`flex-1 flex flex-col overflow-hidden gap-4 hidden md:block bg-transparent`}
+      data-theme="prime200"
+    >
+      <div className={`p-8 rounded-lg w-full h-full flex flex-col items-center justify-center shadow-xl bg-base-100`}>
+        {showLoader && (
+          <span className={`loading loading-spinner loading-xl my-4 text-base-content ${className}`}></span>
+        )}
+        <h1 className={`font-semibold text-base opacity-80 ${className}`}>
+              {message}
+        </h1>
+        <p className="text-sm opacity-60">{additional}</p>
+        {showReloadOptions && (
+          <button
+            className="mt-6 btn border border-white/20 inset-shadow-[1px_1px_2px_-.8px_rgba(255,255,255,.72)]"
+            onClick={() => window.location.reload()}
+          >
+            Retry
+          </button>
+        )}
       </div>
-      <div className="skeleton bg-white/0 h-16 w-full"></div>
+      <div className="skeleton bg-w- h-16 w-full"></div>
     </div>
   );
 
@@ -126,13 +157,17 @@ const IframeRenderer = ({ sourceLocation, liveLocation, title, subtitle, classNa
   }
 
   if (!sourceLocation || hasFetchError || !isDocumentReachable) {
-    return renderContentArea("An issue occurred while attempting to generate a preview");
+    return renderContentArea(
+      "Unable to generate a preview", "does the requested page exist?", "text-warning", true, false
+    );
   }
 
   return (
     <>
       {/* Desktop View */}
-      <div className={`hidden md:flex flex-1 flex-col overflow-hidden gap-4 ${className || ""}`}>
+      <div
+        className={`hidden md:flex flex-1 flex-col overflow-hidden gap-4 ${className || ""}`}
+      >
         {renderPreviewView(false)}
       </div>
 

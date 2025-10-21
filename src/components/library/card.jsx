@@ -101,7 +101,7 @@ const Card = ({
               <p className="text-sm opacity-60">{subtitle}</p>
             )}
             {chips && chips.length > 0 && (
-              <div className="flex flex-wrap gap-1 mt-2">
+              <div className="flex flex-wrap gap-1">
                 {chips.map((chip, index) => (
                   <span
                     key={index}
@@ -132,9 +132,9 @@ const Card = ({
 
       {/* Always Visible Children (sectionsAlwaysVisible > 0) */}
       {sectionsAlwaysVisible > 0 && (
-        <div className="pt-2">
+        <div className="mt-4">
           {sections.slice(0, sectionsAlwaysVisible).map((section, index) => (
-            <div key={`visible-${index}`} className="pb-0">
+            <div key={`visible-${index}`} className="">
               {React.isValidElement(section)
                 ? React.cloneElement(section, { sectionIndex: index })
                 : section}
@@ -150,7 +150,7 @@ const Card = ({
           className="overflow-hidden transition-all duration-200 ease-in-out"
           style={{
             maxHeight: isExpanded ? "500px" : "0px",
-            paddingTop: isExpanded ? "8px" : "0px",
+            paddingTop: isExpanded ? "0px" : "0px",
             overflowY: "auto",
             overflowX: "hidden",
           }}
@@ -165,14 +165,14 @@ const Card = ({
                   <div
                     key={originalIndex}
                     data-section-index={originalIndex}
-                    className="transition-all duration-600 ease-in-out mb-2"
+                    className="transition-all duration-600 ease-in-out"
                     style={{
                       opacity: isExpanded ? 1 : 0,
                       transform: isExpanded ? "translateY(0)" : "translateY(-24px)",
                       transitionDelay: isExpanded ? `${index * 60}ms` : "0ms",
                     }}
                   >
-                    <div className="pb-0">
+                    <div className="">
                       {React.isValidElement(section)
                         ? React.cloneElement(section, { sectionIndex: originalIndex })
                         : section}

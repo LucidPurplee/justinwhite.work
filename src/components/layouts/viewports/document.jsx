@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import "./documentViewport.css";
-import Card from "../../library/card.jsx";
+import Card from "../../library/card.jsx"; // Unfortunate concession, I couldnt find a way to do this cleanly in tailwind 😔
 
 // --- Full-Screen Modal Always Visible on Mobile ---
 const Modal = ({ title, children }) => {
@@ -29,10 +29,7 @@ const Modal = ({ title, children }) => {
     );
 };
 
-/**
- * Renders markdown content, handling missing content and rendering errors.
- * It fetches the document content from the provided sourceLocation URL.
- */
+// A basic viewport (visually the same as the preview viewport), renders a markdown file instead of a url.
 const MarkdownRenderer = ({ sourceLocation, title, subtitle, className }) => {
   const [markdownContent, setMarkdownContent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -215,6 +212,7 @@ const MarkdownRenderer = ({ sourceLocation, title, subtitle, className }) => {
         data-theme="prime200"
       >
         <p className="text-yellow-500 font-semibold">{message}</p>
+        <span class="loading loading-spinner loading-xl"></span>
       </div>
       <div className="skeleton bg-white/1 h-16 w-full"></div>
     </div>

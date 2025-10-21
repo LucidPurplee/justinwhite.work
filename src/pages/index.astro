@@ -7,23 +7,18 @@ import Categories from "../components/layouts/controlPane/categories.jsx";
 import Card from "../components/library/card.jsx";
 import MDViewport from "../components/layouts/viewports/document.jsx";
 import IFViewport from "../components/layouts/viewports/preview.jsx";
+
+import SidePane from "../components/layouts/controlPane/pane.astro";
 ---
 
 <Seo title="Home - Justinwhite.work" />
 
 <Root title="Home - Justinwhite.work">
-  <div class="h-screen w-screen overflow-hidden p-2 md:p-4 flex flex-row gap-2 md:gap-4" data-theme="prime100">
-
-    <aside
-  class="flex flex-col items-center min-h-full flex-1 md:max-w-96 sticky top-0 max-h-screen overflow-hidden gap-2 md:gap-4"
-  transition:persist
->
-  <Bio client:load />
-
-  <div class="overflow-y-auto flex-1 w-full pb-[16%]">
-    <Categories client:load />
-  </div>
-</aside>
+  <div
+    class="h-screen w-screen overflow-hidden p-2 md:p-4 flex flex-row gap-2 md:gap-4"
+    data-theme="prime100"
+  >
+    <SidePane/>
 
     <MDViewport
       sourceLocation="/docs/home.md"
@@ -32,6 +27,5 @@ import IFViewport from "../components/layouts/viewports/preview.jsx";
       className="md:flex hidden"
       client:only="react"
     />
-
   </div>
 </Root>

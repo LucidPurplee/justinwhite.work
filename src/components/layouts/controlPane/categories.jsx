@@ -17,7 +17,8 @@ const ALL_ITEMS = [
     name: "Google IT Automation w/ python",
     chips: ["Google", "6 Courses", "complete"],
     categories: ["Education", "Highlights", "All"],
-    highlight: false,
+    highlight: true,
+
     // Children can be other items
     children: [
       {
@@ -25,36 +26,42 @@ const ALL_ITEMS = [
         name: "Troubleshooting and Debugging Techniques",
         link: "/preview?source=https://coursera.org/share/d6bddc5cbe5c8d9ec24c814c11e5c7ba",
         chips: ["Completed"],
+        highlight: true,
       },
       {
         id: 2,
         name: "Introduction to Git and GitHub",
         link: "/preview?source=https://coursera.org/share/77c807ce1cc6c4157591cf0a70369f36",
         chips: ["Completed"],
+        highlight: true,
       },
       {
         id: 3,
         name: "Using Python to Interact with the Operating System",
         link: "/preview?source=https://coursera.org/share/04178093d8192042941c48ba04cc4688",
         chips: ["Completed"],
+        highlight: true,
       },
       {
         id: 4,
         name: "Configuration Management and the Cloud",
         link: "/preview?source=https://coursera.org/share/e7ee6e07934d7b11db97e397310c72ec",
         chips: ["Completed"],
+        highlight: true,
       },
       {
         id: 5,
         name: "Crash Course on Python",
         link: "/preview?source=https://coursera.org/share/a9fba9e9dfd9ef6dcd4d24c573291705",
         chips: ["Completed"],
+        highlight: true,
       },
       {
         id: 6,
         name: "Automating Real-World Tasks with Python",
         link: "/preview?source=https://coursera.org/share/5696ba41d35619b957274b031b026d64",
         chips: ["Completed"],
+        highlight: true,
       },
     ],
   },
@@ -146,7 +153,7 @@ const App = () => {
         image={item.icon}
         link={item.link}
         linkCreatesTab={false}
-        className={item.highlight ? "bg-white/2 text-base-content p-4" : "bg-base-100 text-base-content"}
+        className={item.highlight ? "bg-base-content/84 text-base-100 p-4 mt-2" : "bg-base-100/84 text-base-content mt-2"}
       >
         {hasChildren && item.children.map((child) => renderItem(child))}
       </Card>

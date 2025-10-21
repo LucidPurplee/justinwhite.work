@@ -12,10 +12,7 @@ const RealBio = () => {
     >
       <Blurb Header="About me" Body="This should always be visible" />
       <Blurb Header="Section 2" Body="This should hide/show on click" />
-
-      <div class="flex flex-row gap-2 w-full">
-        <a class="badge border-2 border-white/20 hidden md:flex" href="/"> Home </a>
-      </div>
+      
     </Card>
   );
 };

@@ -7,6 +7,8 @@ import Bio from "../components/layouts/controlPane/bioCard.jsx";
 import Categories from "../components/layouts/controlPane/categories.jsx";
 import MDViewport from "../components/layouts/viewports/document.jsx";
 
+import SidePane from "../components/layouts/controlPane/pane.astro";
+
 
 const url = new URL(Astro.request.url);
 const sourceParam = url.searchParams.get("source");
@@ -37,14 +39,7 @@ else {
 <Root title="Home - Justinwhite.work">
   <div class="h-screen w-screen overflow-hidden p-2 md:p-4 flex flex-row gap-2 md:gap-4" data-theme="prime100">
 
-    <aside
-      class="flex flex-col items-center min-h-full flex-1 md:max-w-96 sticky top-0 overflow-y-auto gap-2 md:gap-4 pb-[16%]" transition:persist
-    >
-      <div class="sticky top-0 z-10">
-        <Bio client:load />
-      </div>
-      <Categories client:load />
-    </aside>
+    <SidePane/>
 
     <MDViewport
       sourceLocation={sourceLocation}
