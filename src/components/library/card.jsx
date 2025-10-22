@@ -94,7 +94,7 @@ const Card = ({
         <div className="flex items-center gap-4">
           {image && (
             <div className="flex-shrink-0">
-              <div className="h-12 rounded-lg overflow-hidden">
+              <div className="h-12 w-12 aspect-square aspect-w-1 aspect-h-1 rounded-lg overflow-hidden">
                 <img
                   src={image}
                   alt={title}

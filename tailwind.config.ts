@@ -8,5 +8,5 @@ export default {
       mono: ["Space Mono", "ui-monospace", "monospace"],
     },
   },
-  plugins: [daisyui],
+  plugins: [daisyui, require('@tailwindcss/aspect-ratio'),],
 }
