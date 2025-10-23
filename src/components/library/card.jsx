@@ -137,6 +137,7 @@ const Card = ({
             className="btn btn-circle transition-colors duration-400 flex-shrink-0"
             aria-expanded={isExpanded}
             aria-controls="rich-card-sections"
+            aria-label = "toggle accordian"
           >
             {isExpanded ? <TbChevronUp /> : <TbChevronDown />}
           </button>
