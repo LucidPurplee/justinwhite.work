@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Card from "../../library/card.jsx";
 
-// --- Full-Screen Modal Always Visible on Mobile ---
+// mobile modal/ui
 const Modal = ({ title, children }) => {
   const handleCloseAndNavigate = () => {
     window.location.href = "/";
@@ -22,9 +22,7 @@ const Modal = ({ title, children }) => {
   );
 };
 
-/**
- * Renders an HTML page inside an iframe, handling missing content and fetch errors.
- */
+// viewport
 const IframeRenderer = ({
   sourceLocation,
   liveLocation,
@@ -80,6 +78,7 @@ const IframeRenderer = ({
       window.open(liveLocation, "_blank", "noopener,noreferrer");
   };
 
+  // todo : I should probably make this render to the default ui so it works on mobile maybe
   const renderPreviewView = (isMobile = false) => (
     <>
       <div
@@ -141,7 +140,7 @@ const IframeRenderer = ({
         <p className="text-sm opacity-60">{additional}</p>
         {showReloadOptions && (
           <button
-            className="mt-6 btn border border-white/20 inset-shadow-[1px_1px_2px_-.8px_rgba(255,255,255,.72)]"
+            className="mt-6 btn border border-white/20 inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)]"
             onClick={() => window.location.reload()}
           >
             Retry

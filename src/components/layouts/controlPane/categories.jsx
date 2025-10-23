@@ -107,7 +107,7 @@ const CATEGORIES = [
 const FilterChip = ({ name, icon: Icon, isSelected, onClick }) => {
   const baseClasses = `
     badge badge-lg flex items-center gap-2 px-2 cursor-pointer transition-all duration-200 select-none whitespace-nowrap border-white/20 
-    inset-shadow-[1px_1px_2px_-.8px_rgba(255,255,255,.72)]
+    inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)]
   `;
 
   const selectedClasses = `

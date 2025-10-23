@@ -4,7 +4,7 @@ import remarkGfm from "remark-gfm";
 import "./documentViewport.css";
 import Card from "../../library/card.jsx"; // Unfortunate concession, I couldnt find a way to do this cleanly in tailwind 😔
 
-// --- Full-Screen Modal Always Visible on Mobile ---
+// Modal for mobile
 const Modal = ({ title, children }) => {
     const handleCloseAndNavigate = () => {
         window.location.href = '/';
@@ -29,7 +29,7 @@ const Modal = ({ title, children }) => {
     );
 };
 
-// A basic viewport (visually the same as the preview viewport), renders a markdown file instead of a url.
+// Viewport
 const MarkdownRenderer = ({ sourceLocation, title, subtitle, className }) => {
   const [markdownContent, setMarkdownContent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -154,7 +154,7 @@ const MarkdownRenderer = ({ sourceLocation, title, subtitle, className }) => {
   const renderDocumentView = (isMobile = false) => (
     <>
       <div
-        className={`p-8 rounded-lg w-full shadow-xl overflow-y-auto ${isMobile ? 'flex-1 min-h-0' : 'max-h-full flex-1'}`}
+        className={`p-8 rounded-lg w-full shadow-xl overflow-y-auto border-white/10 inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)] ${isMobile ? 'flex-1 min-h-0' : 'max-h-full flex-1'}`}
         data-theme="prime200"
       >
         {showRaw ? (
@@ -205,6 +205,7 @@ const MarkdownRenderer = ({ sourceLocation, title, subtitle, className }) => {
     </>
   );
 
+  // todo : I should probably make this render to the default ui so it works on mobile maybe
   const renderContentArea = (
     message,
     additional = "",
@@ -226,7 +227,7 @@ const MarkdownRenderer = ({ sourceLocation, title, subtitle, className }) => {
         <p className="text-sm opacity-60">{additional}</p>
         {showReloadOptions && (
           <button
-            className="mt-6 btn border border-white/20 inset-shadow-[1px_1px_2px_-.8px_rgba(255,255,255,.72)]"
+            className="mt-6 btn border border-white/20 inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)]"
             onClick={() => window.location.reload()}
           >
             Retry

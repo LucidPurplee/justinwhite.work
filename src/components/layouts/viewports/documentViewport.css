@@ -2,6 +2,7 @@
     font-size: 16px;
     line-height: 1.6;
     color: #e5e7eb;
+    letter-spacing: -0.05rem;
 }
 
 .md-content * {
@@ -38,7 +39,7 @@
 
 .md-content p {
     margin: 0 0 1rem 0 !important;
-    color: rgba(229, 231, 235, 0.92) !important;
+    color: rgba(229, 231, 235, 0.85) !important;
 }
 
 .md-content img {
@@ -48,7 +49,9 @@
     object-fit: contain;
     margin-left: -16px;
     margin-right: -16px;
-    border-radius: 16px
+    border-radius: 16px;
+    filter: drop-shadow(0 0 4rem rgba(255, 0, 98, 0.1))
+            drop-shadow(0 0 16rem rgb(81, 0, 255, 0.2));
 }
 
 .md-content ul,
@@ -96,22 +99,29 @@
 
 .md-content strong {
     font-weight: 700 !important;
-    color: rgba(229, 231, 235, 1) !important;
+    color: rgba(229, 231, 235, .9) !important;
 }
 
 .md-content p strong {
     font-weight: 700 !important;
-    color: rgba(229, 231, 235, 1) !important;
+    color: rgba(229, 231, 235, .9) !important;
 }
 
 .md-content em {
     font-style: italic !important;
-    color: rgba(229, 231, 235, 0.72) !important;
+    color: rgba(229, 231, 235, 0.6) !important;
 }
 
 .md-content a {
     color: #60a5fa !important;
     text-decoration: underline !important;
+    filter: drop-shadow(0 0 2rem #60a5fa3f) !important;
+    transition: filter 0.3s ease !important;
+}
+
+.md-content a:hover {
+    filter: drop-shadow(0 0 1rem #60a5fa) !important;
+    text-decoration: none !important;
 }
 
 .md-content blockquote {

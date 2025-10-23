@@ -1,6 +1,6 @@
-# Justin White (.work) 🎉
+# Justinwhite.work 🎉
 
-![Alt text](/banners/jwworkbanner.png)
+![Alt text](/banners/jwworkbanner2.png)
 
 Hey! I'm Justin. 👋  
 I code, though I'm not super focused on any single area of computer science—my current education leans toward IT. My goal is to work my way into being a **data center engineer** 🖥️ or a **backend engineer** 🛠️ of some kind.  

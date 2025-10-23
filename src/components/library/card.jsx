@@ -84,7 +84,7 @@ const Card = ({
       className={`
       p-2 rounded-xl transition-all duration-400 ease-in-out
       w-full max-w-full border border-white/10 hover:border-white/20
-      inset-shadow-[1px_1px_2px_-.8px_rgba(255,255,255,.72)]
+      inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)]
       ${className}
       `}
     >
@@ -94,7 +94,7 @@ const Card = ({
         <div className="flex items-center gap-4">
           {image && (
             <div className="flex-shrink-0">
-              <div className="h-12 w-12 aspect-square aspect-w-1 aspect-h-1 rounded-lg overflow-hidden">
+              <div className="h-12 w-12 aspect-square aspect-w-1 aspect-h-1 rounded-lg overflow-hidden drop-shadow-[0_2px_0.25rem_rgba(255,255,255,0.2)]">
                 <img
                   src={image}
                   alt={title}
@@ -120,7 +120,7 @@ const Card = ({
                 {chips.map((chip, index) => (
                   <span
                     key={index}
-                    className="badge badge-sm border border-white/20 inset-shadow-[1px_1px_2px_-.8px_rgba(255,255,255,.72)]"
+                    className="badge badge-sm border border-white/20 inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)]"
                   >
                     {chip}
                   </span>

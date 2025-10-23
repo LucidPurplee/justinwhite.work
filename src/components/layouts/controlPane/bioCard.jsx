@@ -11,16 +11,15 @@ const RealBio = () => {
       visibleChildren={1}
       visibleChildrenBottom={1}
     >
-      <Blurb Header="About me" Body="This should always be visible" />
-      <Blurb Header="Section 2" Body="This should hide/show on click" />
+      <Blurb Header="About Me" Body="I'm Justin, a South Carolina-based developer pursuing data center or backend engineering." />
 
-      <div className="w-full flex flex-row">
-        <a
-          href="/"
-          className="badge badge-sm border border-white/20 inset-shadow-[1px_1px_2px_-.8px_rgba(255,255,255,.72)] md:flex hidden"
-        >
-          home
-        </a>
+      <Blurb Header="What I Do" Body="Freelance web developer specializing in responsive, fast, and accessible sites using React, Astro, and Tailwind." />
+
+      <Blurb Header="Current Focus" Body="Collecting certifications (IT Support, Automation, Data Analytics) while hunting for my first job in the space." />
+
+      <div className="w-full flex flex-row gap-1">
+        <a href="/" className="badge badge-sm border border-white/20 inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)] md:flex hidden"> home </a>
+        <a href="/" className="badge badge-sm border border-white/20 inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)] flex"> github </a>
       </div>
     </Card>
   );
@@ -35,7 +34,7 @@ const CensoredBio = () => {
       className="w-full"
       visibleChildren={1}
     >
-      <Blurb Header="About me" Body="This should always be visible" />
+      <Blurb Header="About me" Body="I'm [persona], an aspiring data center or backend engineer collecting certifications while freelancing as a web developer in South Carolina." />
       <Blurb Header="Section 2" Body="This should hide/show on click" />
     </Card>
   );
