@@ -43,9 +43,9 @@
 }
 
 .md-content img {
+    display: block;
     max-width: calc(100% + 32px);
-    height: auto;
-    max-height: 800px;
+    width: calc(100% + 32px);
     object-fit: contain;
     margin-left: -16px;
     margin-right: -16px;

@@ -26,42 +26,36 @@ const ALL_ITEMS = [
         name: "Troubleshooting and Debugging Techniques",
         link: "/preview?source=https://coursera.org/share/d6bddc5cbe5c8d9ec24c814c11e5c7ba",
         chips: ["Completed"],
-        highlight: true,
       },
       {
         id: 2,
         name: "Introduction to Git and GitHub",
         link: "/preview?source=https://coursera.org/share/77c807ce1cc6c4157591cf0a70369f36",
         chips: ["Completed"],
-        highlight: true,
       },
       {
         id: 3,
         name: "Using Python to Interact with the Operating System",
         link: "/preview?source=https://coursera.org/share/04178093d8192042941c48ba04cc4688",
         chips: ["Completed"],
-        highlight: true,
       },
       {
         id: 4,
         name: "Configuration Management and the Cloud",
         link: "/preview?source=https://coursera.org/share/e7ee6e07934d7b11db97e397310c72ec",
         chips: ["Completed"],
-        highlight: true,
       },
       {
         id: 5,
         name: "Crash Course on Python",
         link: "/preview?source=https://coursera.org/share/a9fba9e9dfd9ef6dcd4d24c573291705",
         chips: ["Completed"],
-        highlight: true,
       },
       {
         id: 6,
         name: "Automating Real-World Tasks with Python",
         link: "/preview?source=https://coursera.org/share/5696ba41d35619b957274b031b026d64",
         chips: ["Completed"],
-        highlight: true,
       },
     ],
   },
@@ -137,13 +131,14 @@ const App = () => {
 
   // Filter items based on category - only check root level
   const filteredItems = useMemo(() => {
-    return ALL_ITEMS.filter((item) => 
+    return ALL_ITEMS.filter((item) =>
       item.categories.includes(selectedCategory)
     );
   }, [selectedCategory]);
 
-  const renderItem = (item) => {
+  const renderItem = (item, depth = 0, isLastChild = false) => {
     const hasChildren = item.children && item.children.length > 0;
+    const isChild = depth > 0;
 
     return (
       <Card
@@ -153,9 +148,21 @@ const App = () => {
         image={item.icon}
         link={item.link}
         linkCreatesTab={false}
-        className={item.highlight ? "bg-base-content/84 text-base-100 p-4 mt-2" : "bg-base-100/84 text-base-content mt-2"}
+        className={
+          isChild && isLastChild
+            ? "transition-all duration-200 ease-in-out border-0 border-b-0 !rounded-none inset-shadow-none text-base-content/80 w-full m-0 p-0 mt-4 shadow-[inset_0_-20px_20px_-10px_rgba(255,255,255,0)] hover:shadow-[inset_0_-20px_20px_-10px_rgba(255,255,255,0.15)]" // Last child styling
+            : isChild
+              ? "transition-all duration-200 ease-in-out border-0 border-b-1 !rounded-none inset-shadow-none text-base-content/80 w-full m-0 p-0 mt-4 shadow-[inset_0_0px_0px_-10px_rgba(255,255,255,0)] hover:shadow-[inset_0_-20px_20px_-10px_rgba(255,255,255,0.15)]" // Child styling
+              : item.highlight
+                ? "bg-base-content/4 text-base-content p-4 mt-2 mb-2 w-full"
+                : "bg-transparent text-base-content mt-2 w-full"
+        }
       >
-        {hasChildren && item.children.map((child) => renderItem(child))}
+        {hasChildren &&
+          item.children.map((child, index, array) => {
+            const isLastChild = index === array.length - 1;
+            return renderItem(child, depth + 1, isLastChild);
+          })}
       </Card>
     );
   };
@@ -164,7 +171,7 @@ const App = () => {
     <div className="w-full">
       <div className="card w-full max-w-4xl mx-auto">
         {/* Filter Chips */}
-        <div className="flex flex-wrap gap-2 sm:gap-1 mt-2 mb-2">
+        <div className="flex flex-wrap gap-2 mt-4">
           {CATEGORIES.map((category) => (
             <FilterChip
               key={category.name}
@@ -177,7 +184,7 @@ const App = () => {
         </div>
 
         {/* Items Grid */}
-        <div className="grid gap-2">
+        <div className="grid">
           {filteredItems.length > 0 ? (
             filteredItems.map((item) => renderItem(item))
           ) : (

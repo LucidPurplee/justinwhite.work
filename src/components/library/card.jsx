@@ -116,7 +116,7 @@ const Card = ({
               <p className="text-sm opacity-60">{subtitle}</p>
             )}
             {chips && chips.length > 0 && (
-              <div className="flex flex-wrap gap-1">
+              <div className="flex flex-wrap gap-1 mt-2">
                 {chips.map((chip, index) => (
                   <span
                     key={index}
@@ -148,7 +148,7 @@ const Card = ({
       
       {/* Always Visible Children (TOP) */}
       {sectionsAlwaysVisibleTop > 0 && (
-        <div className="mt-2 space-y-2"> {/* Added space-y-2 for spacing between sections */}
+        <div className="mt-4 space-y-2"> {/* Added space-y-2 for spacing between sections */}
           {sections.slice(0, topEndIndex).map((section, index) => (
             <div key={`visible-top-${index}`} className="">
               {React.isValidElement(section)

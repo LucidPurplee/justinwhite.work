@@ -17,7 +17,7 @@ const RealBio = () => {
 
       <Blurb Header="Current Focus" Body="Collecting certifications (IT Support, Automation, Data Analytics) while hunting for my first job in the space." />
 
-      <div className="w-full flex flex-row gap-1">
+      <div className="w-full flex flex-row gap-1 mt-4">
         <a href="/" className="badge badge-sm border border-white/20 inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)] md:flex hidden"> home </a>
         <a href="/" className="badge badge-sm border border-white/20 inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)] flex"> github </a>
       </div>
