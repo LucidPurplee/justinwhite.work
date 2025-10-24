@@ -163,7 +163,7 @@ const Card = ({
       {collapsibleSectionsCount > 0 && !link && (
         <div
           id="rich-card-sections"
-          className={`transition-all ease-in-out ${isExpanded ? "duration-400" : "duration-600"}`}
+          className={`transition-all ease-in-out ${isExpanded ? "duration-300" : "duration-400"}`}
           style={{
             maxHeight: isExpanded ? "32rem" : "0px",
             overflowY: "auto",
@@ -184,7 +184,7 @@ const Card = ({
                     style={{
                       opacity: isExpanded ? 1 : 0,
                       transform: isExpanded ? "translateY(0)" : "translateY(-64px)",
-                      marginTop: isExpanded ? "0px" : "-4px",
+                      marginTop: isExpanded ? "0px" : "-0.5rem",
                       transitionDelay: isExpanded ? `${index * 30}ms` : "0ms",
                       transitionDuration: `${(index * 10) + 600}ms`,
                     }}
