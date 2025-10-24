@@ -163,14 +163,14 @@ const Card = ({
       {collapsibleSectionsCount > 0 && !link && (
         <div
           id="rich-card-sections"
-          className="overflow-hidden transition-all duration-200 ease-in-out"
+          className={`transition-all ease-in-out ${isExpanded ? "duration-400" : "duration-600"}`}
           style={{
-            maxHeight: isExpanded ? "500px" : "0px", // Simplified maxHeight transition
+            maxHeight: isExpanded ? "32rem" : "0px",
             overflowY: "auto",
             overflowX: "hidden",
           }}
         >
-          <div className="space-y-2"> {/* Added space-y-2 for spacing between sections */}
+          <div className="">
             {sections
               .slice(collapsibleStartIndex, collapsibleEndIndex)
               .map((section, index) => {
@@ -180,11 +180,13 @@ const Card = ({
                   <div
                     key={originalIndex}
                     data-section-index={originalIndex}
-                    className="transition-all duration-600 ease-in-out"
+                    className="transition-all ease-in-out"
                     style={{
                       opacity: isExpanded ? 1 : 0,
-                      transform: isExpanded ? "translateY(0)" : "translateY(-24px)",
-                      transitionDelay: isExpanded ? `${index * 60}ms` : "0ms",
+                      transform: isExpanded ? "translateY(0)" : "translateY(-64px)",
+                      marginTop: isExpanded ? "0px" : "-4px",
+                      transitionDelay: isExpanded ? `${index * 30}ms` : "0ms",
+                      transitionDuration: `${(index * 10) + 600}ms`,
                     }}
                   >
                     <div className="">
