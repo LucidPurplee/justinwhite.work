@@ -44,14 +44,14 @@
 
 .md-content img {
     display: block;
-    max-width: calc(100% + 32px);
-    width: calc(100% + 32px);
+    max-width: calc(100% + 4rem);
+    width: calc(100% + 4rem);
     object-fit: contain;
-    margin-left: -16px;
-    margin-right: -16px;
-    border-radius: 16px;
-    filter: drop-shadow(0 0 4rem rgba(255, 0, 98, 0.1))
-            drop-shadow(0 0 16rem rgb(81, 0, 255, 0.2));
+    margin-left: -2rem;
+    margin-right: -2rem;
+    border-radius: 2rem;
+    filter: drop-shadow(0 0 16rem rgba(255, 105, 148, 0.2))
+            drop-shadow(0 0 32rem rgba(147, 163, 255, 0.4));
 }
 
 .md-content ul,

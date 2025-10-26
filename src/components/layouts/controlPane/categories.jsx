@@ -100,12 +100,18 @@ const CATEGORIES = [
 
 const FilterChip = ({ name, icon: Icon, isSelected, onClick }) => {
   const baseClasses = `
-    badge badge-lg flex items-center gap-2 px-2 cursor-pointer transition-all duration-200 select-none whitespace-nowrap border-white/20 
-    inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)]
+    badge badge-lg flex items-center gap-2 px-2 cursor-pointer transition-all duration-200 select-none whitespace-nowrap
+    shadow-[inset_0_-1px_2px_rgba(255,255,255,.3)]
+    hover:shadow-[inset_0_-1px_4px_rgba(255,255,255,.6)]!
+    
+    outline-white/20
+    outline-1
+    outline-offset-[-1px]
+    border-0
   `;
 
   const selectedClasses = `
-    badge bg-white/84 text-base-100 border-transparent gap-4 px-4
+    bg-white/64 hover:bg-white/72 text-base-100 badge border-transparent gap-4 px-4 border-0! border-b-2! border-white/32! shadow-[inset_0_-2px_4px_rgba(255,255,255,.3)]! hover:shadow-[inset_0_-2px_6px_rgba(255,255,255,.6)]!
   `;
   const unselectedClasses = `
     badge-ghost
@@ -150,12 +156,12 @@ const App = () => {
         linkCreatesTab={false}
         className={
           isChild && isLastChild
-            ? "transition-all duration-200 ease-in-out border-0 border-b-0 !rounded-none inset-shadow-none text-base-content/80 w-full m-0 p-0 mt-4 shadow-[inset_0_-20px_20px_-10px_rgba(255,255,255,0)] hover:shadow-[inset_0_-20px_20px_-10px_rgba(255,255,255,0.15)]" // Last child styling
+            ? "outline-0! border-white/20 transition-all duration-200 ease-in-out border-0 border-b-0 !rounded-none inset-shadow-none text-base-content/80 w-full m-0 p-0 mt-4 shadow-[inset_0_-20px_20px_-10px_rgba(255,255,255,0)] hover:shadow-[inset_0_-20px_20px_-10px_rgba(255,255,255,0.15)]" // Last child styling
             : isChild
-              ? "transition-all duration-200 ease-in-out border-0 border-b-1 !rounded-none inset-shadow-none text-base-content/80 w-full m-0 p-0 mt-4 shadow-[inset_0_0px_0px_-10px_rgba(255,255,255,0)] hover:shadow-[inset_0_-20px_20px_-10px_rgba(255,255,255,0.15)]" // Child styling
+              ? "outline-0! border-white/20 transition-all duration-200 ease-in-out border-0 border-b-1 !rounded-none inset-shadow-none text-base-content/80 w-full m-0 p-0 mt-4 shadow-[inset_0_0px_0px_-10px_rgba(255,255,255,0)] hover:shadow-[inset_0_-20px_20px_-10px_rgba(255,255,255,0.15)]" // Child styling
               : item.highlight
-                ? "bg-base-content/4 text-base-content p-4 mt-2 mb-2 w-full"
-                : "bg-transparent text-base-content mt-2 w-full"
+                ? "bg-base-100 hover:bg-base-300 text-base-content p-4 mt-2 mb-2 w-full"
+                : "bg-transparent hover:bg-base-100 text-base-content mt-2 w-full"
         }
       >
         {hasChildren &&

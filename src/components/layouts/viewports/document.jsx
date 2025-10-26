@@ -150,11 +150,16 @@ const MarkdownRenderer = ({ sourceLocation, title, subtitle, className }) => {
 
   const renderDocumentView = (isMobile = false) => (
     <div
-      className={`w-full h-full flex flex-col rounded-lg border-white/10 inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)] overflow-y-hidden overflow-x-hidden relative`}
+      className={`
+        w-full h-full bg-base-200 flex flex-col rounded-lg border-white/10 shadow-[inset_0_-1px_1px_rgba(255,255,255,.3)] overflow-y-hidden overflow-x-hidden relative 
+        outline-white/20
+        outline-1
+        outline-offset-[-1px]!
+        `}
       data-theme="prime200"
     >
       <div
-        className={`px-16 py-8 w-full shadow-xl overflow-y-scroll ${isMobile ? "flex-1 min-h-0" : "max-h-full flex-1"}`}
+        className={`px-16 pt-8 pb-24 w-full shadow-xl overflow-y-scroll ${isMobile ? "flex-1 min-h-0" : "max-h-full flex-1"}`}
       >
         {showRaw ? (
           <pre className="whitespace-pre-wrap font-mono text-sm">
@@ -172,7 +177,7 @@ const MarkdownRenderer = ({ sourceLocation, title, subtitle, className }) => {
       <Card
         title={title}
         subtitle={subtitle}
-        className="w-full max-w-full bg-base-300/64 hover:bg-base-300/72 !duration-600 !rounded-t-none !rounded-b-lg absolute bottom-0 left-0 right-0 z-10 backdrop-blur-md"
+        className="w-full max-w-full bg-base-200/64 hover:bg-base-300/48 !duration-600 !rounded-t-none !rounded-b-lg absolute bottom-0 left-0 right-0 z-10 backdrop-blur-lg"
       >
         <div className="py-1 px-2 flex flex-row gap-2">
           <button
@@ -234,7 +239,7 @@ const MarkdownRenderer = ({ sourceLocation, title, subtitle, className }) => {
         <p className="text-sm opacity-60">{additional}</p>
         {showReloadOptions && (
           <button
-            className="mt-6 btn border border-white/20 inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)]"
+            className="mt-6 btn border border-white/20 shadow-[inset_0_-1px_1px_rgba(255,255,255,.3)]"
             onClick={() => window.location.reload()}
           >
             Retry

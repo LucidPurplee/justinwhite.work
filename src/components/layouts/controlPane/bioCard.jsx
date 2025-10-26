@@ -7,7 +7,7 @@ const RealBio = () => {
       title="Justin White"
       subtitle="hmu@justinwhite.work"
       image="/icos/Profile.png"
-      className="w-full bg-base-100"
+      className="w-full bg-base-200"
       visibleChildren={1}
       visibleChildrenBottom={1}
     >

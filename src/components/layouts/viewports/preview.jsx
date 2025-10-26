@@ -80,11 +80,11 @@ const IframeRenderer = ({
 
   const renderPreviewView = (isMobile = false) => (
     <div
-      className={`w-full h-full flex flex-col rounded-xl border-white/10 inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)] overflow-y-hidden overflow-x-hidden relative`}
+      className={`w-full h-full flex flex-col rounded-xl border-white/10 shadow-[inset_0_-1px_1px_rgba(255,255,255,.3)] overflow-y-hidden overflow-x-hidden relative`}
       data-theme="prime200"
     >
       <div
-        className={`p-4 w-full shadow-xl overflow-y-auto ${isMobile ? "flex-1 min-h-0" : "max-h-full flex-1"}`}
+        className={`p-2 w-full shadow-xl overflow-y-auto ${isMobile ? "flex-1 min-h-0" : "max-h-full flex-1"}`}
       >
         <iframe
           ref={iframeRef}
@@ -99,7 +99,7 @@ const IframeRenderer = ({
       <Card
         title={title}
         subtitle={subtitle}
-        className="w-full max-w-full bg-base-300/64 hover:bg-base-300/72 !duration-600 !rounded-t-none !rounded-b-lg absolute bottom-0 left-0 right-0 z-10 backdrop-blur-md"
+        className="w-full max-w-full bg-base-300/64 hover:bg-base-300/72 !duration-600 !rounded-t-none !rounded-b-lg absolute bottom-0 left-0 right-0 z-10 backdrop-blur-lg"
       >
         <div className="py-1 px-2 flex flex-row gap-2">
           <button className="btn border bg-base-100/20 border-white/20" 
@@ -195,7 +195,7 @@ const IframeRenderer = ({
         <p className="text-sm opacity-60">{additional}</p>
         {showReloadOptions && (
           <button
-            className="mt-6 btn border border-white/20 inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)]"
+            className="mt-6 btn border border-white/20 shadow-[inset_0_-1px_1px_rgba(255,255,255,.3)]"
             onClick={() => window.location.reload()}
           >
             Retry

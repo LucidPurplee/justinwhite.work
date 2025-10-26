@@ -83,8 +83,12 @@ const Card = ({
     <div
       className={`
       p-2 rounded-xl transition-all duration-400 ease-in-out
-      w-full max-w-full border border-white/10 hover:border-white/20
-      inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)]
+      w-full max-w-full shadow-[inset_0_-1px_1px_rgba(255,255,255,.3)]
+      hover:shadow-[inset_0_-1px_1px_rgba(255,255,255,.4)]
+      hover:outline-white/20
+      outline-white/10
+      outline-1
+      outline-offset-[-1px]!
       ${className}
       `}
     >
@@ -120,7 +124,7 @@ const Card = ({
                 {chips.map((chip, index) => (
                   <span
                     key={index}
-                    className="badge badge-sm border border-white/20 inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)]"
+                    className="badge badge-sm border border-white/20 shadow-[inset_0_-2px_4px_rgba(255,255,255,.2)]"
                   >
                     {chip}
                   </span>
@@ -134,7 +138,7 @@ const Card = ({
         {canToggle && ( // Use the new 'canToggle' logic
           <button
             onClick={toggleExpand}
-            className="btn btn-circle transition-colors duration-400 flex-shrink-0"
+            className="btn btn-circle transition-colors duration-400 flex-shrink-0 bg-base-200/48"
             aria-expanded={isExpanded}
             aria-controls="rich-card-sections"
             aria-label = "toggle accordian"
@@ -165,7 +169,7 @@ const Card = ({
           id="rich-card-sections"
           className={`transition-all ease-in-out ${isExpanded ? "duration-300" : "duration-400"}`}
           style={{
-            maxHeight: isExpanded ? "32rem" : "0px",
+            maxHeight: isExpanded ? "28rem" : "0px",
             overflowY: "auto",
             overflowX: "hidden",
           }}
@@ -183,10 +187,10 @@ const Card = ({
                     className="transition-all ease-in-out"
                     style={{
                       opacity: isExpanded ? 1 : 0,
-                      transform: isExpanded ? "translateY(0)" : "translateY(-64px)",
-                      marginTop: isExpanded ? "0px" : "-0.5rem",
-                      transitionDelay: isExpanded ? `${index * 30}ms` : "0ms",
-                      transitionDuration: `${(index * 10) + 600}ms`,
+                      transform: isExpanded ? "translateY(0)" : "translateY(-4rem)",
+                      marginTop: isExpanded ? "0px" : "-1rem",
+                      transitionDelay: isExpanded ? `${index * 20}ms` : "0ms",
+                      transitionDuration: `${(index * 90) + 600}ms`,
                     }}
                   >
                     <div className="">
