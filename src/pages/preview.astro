@@ -2,6 +2,7 @@
 export const prerender = false;
 
 import Root from "../components/layouts/BaseLayout.astro";
+import RootContent from "../components/layouts/RootContent.astro";
 import Seo from "../components/layouts/BaseSEO.astro";
 
 import IFViewport from "../components/layouts/viewports/preview.jsx";
@@ -20,8 +21,8 @@ if (!sourceParam ||
     return Astro.redirect("/");
 }
 
-console.log(`[Astro] SourceParam read: "${sourceParam}"`);
-console.log(`[Astro] LiveParam read: "${liveParam}"`);
+//console.log(`[Astro] SourceParam read: "${sourceParam}"`);
+//console.log(`[Astro] LiveParam read: "${liveParam}"`);
 
 // Determine if we should show live site or snapshot
 const isLive = liveParam === "true";
@@ -37,7 +38,14 @@ const displaySource = isLive ? sourceParam : "/api/snapshot?url=" + sourceParam;
 <Seo title="Home - Justinwhite.work" />
 
 <Root title="Home - Justinwhite.work">
-  <div class="h-screen w-screen overflow-hidden p-2 flex flex-row gap-2 bg-base-200" data-theme="prime100">
+  <div
+    class="
+    h-screen w-screen overflow-hidden p-2 flex flex-row gap-2
+    bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] 
+    bg-[size:24px_24px] bg-base-200
+    "
+    data-theme="prime100"
+  >
 
     <SidePane/>
 

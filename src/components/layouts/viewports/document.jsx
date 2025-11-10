@@ -11,9 +11,9 @@ const Modal = ({ title, children }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden bg-base-100">
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-visible bg-base-100">
       <div className="w-full h-full flex flex-col p-4">
-        <div className="flex-1 flex flex-col overflow-hidden">{children}</div>
+        <div className="flex flex-1 flex-col overflow-hidden">{children}</div>
         <button
           onClick={handleCloseAndNavigate}
           className="btn btn-lg w-full max-w-full border border-white/20 mt-4"
@@ -151,7 +151,7 @@ const MarkdownRenderer = ({ sourceLocation, title, subtitle, className }) => {
   const renderDocumentView = (isMobile = false) => (
     <div
       className={`
-        w-full h-full bg-base-200 flex flex-col rounded-lg border-white/10 shadow-[inset_0_-1px_1px_rgba(255,255,255,.3)] overflow-y-hidden overflow-x-hidden relative 
+        w-full h-full bg-base-200 flex flex-col rounded-lg border-white/10 shadow-[inset_0_-1px_1px_rgba(255,255,255,.3)] overflow-visible relative 
         outline-white/20
         outline-1
         outline-offset-[-1px]!
@@ -174,42 +174,58 @@ const MarkdownRenderer = ({ sourceLocation, title, subtitle, className }) => {
         )}
       </div>
 
-      <Card
-        title={title}
-        subtitle={subtitle}
-        className="w-full max-w-full bg-base-200/64 hover:bg-base-300/48 !duration-600 !rounded-t-none !rounded-b-lg absolute bottom-0 left-0 right-0 z-10 backdrop-blur-lg"
-      >
-        <div className="py-1 px-2 flex flex-row gap-2">
-          <button
-            className="btn border bg-base-100/20 border-white/20"
-            onClick={handleDownload}
-            disabled={!markdownContent}
-          >
-            Download
-          </button>
-          <button
-            className="btn border bg-base-100/20 border-white/20"
-            onClick={handleReload}
-            disabled={!sourceLocation}
-          >
-            Reload
-          </button>
-          <button
-            className="btn border bg-base-100/20 border-white/20"
-            onClick={handleShare}
-            disabled={!sourceLocation}
-          >
-            Share
-          </button>
-          <button
-            className="btn border bg-base-100/20 border-white/20"
-            onClick={handleViewRaw}
-            disabled={!markdownContent}
-          >
-            {showRaw ? "View Rendered" : "View Raw"}
-          </button>
-        </div>
-      </Card>
+      <div className="absolute bottom-0 left-0 right-0 p-0 md:p-2">
+        <Card
+          title={title}
+          subtitle={subtitle}
+          className="
+          w-full min-w-full bg-base-300/64 hover:bg-base-300/72 !duration-600 z-10
+          p-2 transition-all duration-400 ease-in-out
+          w-full max-w-full shadow-[inset_0_-1px_1px_rgba(255,255,255,.3)]
+          hover:shadow-[inset_0_-1px_1px_rgba(255,255,255,.4)]
+        hover:outline-white/20
+        outline-white/10
+          outline-1
+          outline-offset-[-1px]!
+          backdrop-blur-lg
+          rounded-none!
+          md:rounded-md!
+          border-1
+          border-transparent
+        "
+        >
+          <div className="py-1 px-2 flex flex-row gap-2">
+            <button
+              className="btn border bg-base-100/20 border-white/20"
+              onClick={handleDownload}
+              disabled={!markdownContent}
+            >
+              Download
+            </button>
+            <button
+              className="btn border bg-base-100/20 border-white/20"
+              onClick={handleReload}
+              disabled={!sourceLocation}
+            >
+              Reload
+            </button>
+            <button
+              className="btn border bg-base-100/20 border-white/20"
+              onClick={handleShare}
+              disabled={!sourceLocation}
+            >
+              Share
+            </button>
+            <button
+              className="btn border bg-base-100/20 border-white/20"
+              onClick={handleViewRaw}
+              disabled={!markdownContent}
+            >
+              {showRaw ? "View Rendered" : "View Raw"}
+            </button>
+          </div>
+        </Card>
+      </div>
     </div>
   );
 
@@ -274,7 +290,7 @@ const MarkdownRenderer = ({ sourceLocation, title, subtitle, className }) => {
     <>
       {/* Desktop View */}
       <div
-        className={`hidden md:flex flex-1 flex-col overflow-hidden gap-4 ${className || ""}`}
+        className={`hidden md:flex flex-1 flex-col overflow-hidden gap-4 overflow-visible ${className || ""}`}
       >
         {renderDocumentView(false)}
       </div>

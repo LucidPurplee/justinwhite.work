@@ -1,6 +1,7 @@
 ---
 export const prerender = false
 import Root from "../components/layouts/BaseLayout.astro";
+import RootContent from "../components/layouts/RootContent.astro";
 import Seo from "../components/layouts/BaseSEO.astro";
 
 import Bio from "../components/layouts/controlPane/bioCard.jsx";
@@ -36,17 +37,26 @@ else {
 
 <Seo title="Home - Justinwhite.work" />
 
-<Root title="Home - Justinwhite.work">
-  <div class="h-screen w-screen overflow-hidden p-2 flex flex-row gap-2 bg-base-200" data-theme="prime100">
+<Root title="Document - Justinwhite.work">
+  <div
+    class="
+    h-screen w-screen overflow-hidden p-2 flex flex-row gap-2
+    bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] 
+    bg-[size:24px_24px] bg-base-200
+    "
+    data-theme="prime100"
+  >
+    <SidePane />
 
-    <SidePane/>
-
-    <MDViewport
-      sourceLocation={sourceLocation}
+    <RootContent>
+      <MDViewport
+        sourceLocation={sourceLocation}
       title="Document"
+      className="flex-1 min-h-0"
       subtitle={sourceParam + ".md" || "nan"}
       client:only="react"
-    />
+      />
+    </RootContent>
 
   </div>
 </Root>

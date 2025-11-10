@@ -6,7 +6,7 @@
 
 I study **computer science**, though I'm not super focused on any single area. My current education leans toward IT. My goal is to work my way into being a **data center engineer** 📀 or a **backend engineer** 🛠️ of some kind.
 
-Outside of work, I like to cook 🍳, bake 🧁, and hike/walk 👟 when it's not a billion degrees.
+Outside of work, I like to cook 🍳, bake 🧁, and hike/walk 👟 *(when it's not a billion degrees)*.
 
 I also have what I'd consider impeccable music taste 🎵 and interior design sense 🏳️‍🌈 *(or so I'd like to think 😅)*.
 
@@ -43,12 +43,12 @@ I also have what I'd consider impeccable music taste 🎵 and interior design se
 Here's what I've been diving into lately:  
 
 - **Google IT Support** 🛠️ – *Sep 2025 – Present*  
-- **Google IT Automation** 🤖 – *Aug 2025 - Oct 2025* ✅  
-- **Google Project Management** 📋 – *Sep 2025 – Present*  
-- **Google Data Analytics** 📊 – *Aug 2025 – Present* (almost done!) 🤘  
-- **Google UX Design** 🎨 – *Started but not finishing this one*  
+- **Google IT Automation** 🤖 – *Aug 2025 - Oct 2025*  ✅ 
+- **Google Project Management** 📋 – *Sep 2025 – Present*
+- **Google Data Analytics** 📊 – *Aug 2025 – Present*
+- **Google UX Design** 🎨 – *Not completing*  
 
-I'm stacking certifications, tinkering with tech, and learning as much as I can while planning my next move. Soon I'll be relocating cross-country 📅 and eventually heading to college once I've built a comfy nest egg 🪴. For now, my goal is to land a tech role in the **$60-80k range** 💸, and down the line I want a **Master's in Computer Science or Computer Engineering** 🎓—leaning toward engineering because I want to understand the hardware side too.  
+I'm stacking certifications, tinkering with tech, and learning as much as I can while planning my next move. Soon I'll be relocating cross-country 📅 and eventually heading to college once I've built a comfy nest egg 🪴. For now, my goal is to land a tech role and down the line I want a **Master's in Computer Science or Computer Engineering** 🎓—leaning toward engineering because I want to understand more of the hardware side too.  
 
 > Think of this section as my **"in progress"** Im dreaming, learning and acheiving hopefully!
 

@@ -84,7 +84,7 @@ const IframeRenderer = ({
       data-theme="prime200"
     >
       <div
-        className={`p-2 w-full shadow-xl overflow-y-auto ${isMobile ? "flex-1 min-h-0" : "max-h-full flex-1"}`}
+        className={`p-0 w-full shadow-xl overflow-y-auto ${isMobile ? "flex-1 min-h-0" : "max-h-full flex-1"}`}
       >
         <iframe
           ref={iframeRef}
@@ -96,34 +96,52 @@ const IframeRenderer = ({
         />
       </div>
 
-      <Card
-        title={title}
-        subtitle={subtitle}
-        className="w-full max-w-full bg-base-300/64 hover:bg-base-300/72 !duration-600 !rounded-t-none !rounded-b-lg absolute bottom-0 left-0 right-0 z-10 backdrop-blur-lg"
-      >
-        <div className="py-1 px-2 flex flex-row gap-2">
-          <button className="btn border bg-base-100/20 border-white/20" 
-          onClick={handleReload}>
-            Reload
-          </button>
-          {liveLocation != sourceLocation && (
+      <div className="absolute bottom-0 left-0 right-0 p-0 md:p-2">
+        <Card
+          title={title}
+          subtitle={subtitle}
+          className="
+          w-full min-w-full bg-base-300/64 hover:bg-base-300/72 !duration-600 z-10
+          p-2 transition-all duration-400 ease-in-out
+          w-full max-w-full shadow-[inset_0_-1px_1px_rgba(255,255,255,.3)]
+          hover:shadow-[inset_0_-1px_1px_rgba(255,255,255,.4)]
+        hover:outline-white/20
+        outline-white/10
+          outline-1
+          outline-offset-[-1px]!
+          backdrop-blur-lg
+          rounded-none!
+          md:rounded-md!
+          border-1
+          border-transparent
+        "
+        >
+          <div className="py-1 px-2 flex flex-row gap-2">
             <button
               className="btn border bg-base-100/20 border-white/20"
-              onClick={handleViewRaw}
+              onClick={handleReload}
             >
-              View Raw
+              Reload
             </button>
-          )}
-          {liveLocation && (
-            <button
-              className="btn border bg-base-100/20 border-white/20"
-              onClick={handleLivePage}
-            >
-              Live Page
-            </button>
-          )}
-        </div>
-      </Card>
+            {liveLocation != sourceLocation && (
+              <button
+                className="btn border bg-base-100/20 border-white/20"
+                onClick={handleViewRaw}
+              >
+                View Raw
+              </button>
+            )}
+            {liveLocation && (
+              <button
+                className="btn border bg-base-100/20 border-white/20"
+                onClick={handleLivePage}
+              >
+                Live Page
+              </button>
+            )}
+          </div>
+        </Card>
+      </div>
     </div>
   );
 

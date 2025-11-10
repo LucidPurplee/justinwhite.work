@@ -7,20 +7,17 @@ const RealBio = () => {
       title="Justin White"
       subtitle="hmu@justinwhite.work"
       image="/icos/Profile.png"
-      className="w-full bg-base-200"
+      className="w-full pb-4 backdrop-blur-xs"
       visibleChildren={1}
-      visibleChildrenBottom={1}
+      visibleChildrenBottom={0}
     >
+
       <Blurb Header="About Me" Body="I'm Justin, a South Carolina-based developer pursuing data center or backend engineering." />
 
       <Blurb Header="What I Do" Body="Freelance web developer specializing in responsive, fast, and accessible sites using React, Astro, and Tailwind." />
 
       <Blurb Header="Current Focus" Body="Collecting certifications (IT Support, Automation, Data Analytics) while hunting for my first job in the space." />
 
-      <div className="w-full flex flex-row gap-1 mt-4">
-        <a href="/" className="badge badge-sm border border-white/20 inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)] md:flex hidden"> home </a>
-        <a href="https://github.com/lucidpurplee" className="badge badge-sm border border-white/20 inset-shadow-[1px_1px_2px_-1px_rgba(255,255,255,.72)] flex"> github </a>
-      </div>
     </Card>
   );
 };

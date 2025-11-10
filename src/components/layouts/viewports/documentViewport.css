@@ -14,6 +14,7 @@
     font-weight: 700 !important;
     margin: 0 0 1rem 0 !important;
     color: #f9fafb !important;
+    filter: drop-shadow(0 0 2rem #f9fafb43) !important;
 }
 
 .md-content h2 {
@@ -21,6 +22,18 @@
     font-weight: 600 !important;
     margin: 1.5rem 0 0.75rem 0 !important;
     color: #f9fafb !important;
+    filter: drop-shadow(0 0 2rem #f9fafb58) !important;
+}
+
+::selection {
+  text-shadow: 0 0 1rem #0073ff;
+  background-color: rgba(0, 115, 255, 0.04); /* Optional: light blue background */
+}
+
+/* For Firefox */
+::-moz-selection {
+  text-shadow: 0 0 2rem #0073ff;
+  background-color: rgba(0, 115, 255, 0);
 }
 
 .md-content h3 {
@@ -28,6 +41,7 @@
     font-weight: 600 !important;
     margin: 1.25rem 0 0.5rem 0 !important;
     color: #f3f4f6 !important;
+    filter: drop-shadow(0 0 2rem #f9fafb46) !important;
 }
 
 .md-content h4 {
@@ -35,6 +49,7 @@
     font-weight: 600 !important;
     margin: 1rem 0 0.5rem 0 !important;
     color: #f3f4f6 !important;
+    filter: drop-shadow(0 0 2rem #f9fafb48) !important;
 }
 
 .md-content p {
@@ -115,12 +130,12 @@
 .md-content a {
     color: #60a5fa !important;
     text-decoration: underline !important;
-    filter: drop-shadow(0 0 2rem #60a5fa3f) !important;
-    transition: filter 0.3s ease !important;
+    filter: drop-shadow(0 1rem 1rem #0073ff81) !important;
+    transition: filter .2s ease !important;
 }
 
 .md-content a:hover {
-    filter: drop-shadow(0 0 1rem #60a5fa) !important;
+    filter: drop-shadow(0 0 1rem #0073ff) !important;
     text-decoration: none !important;
 }
 

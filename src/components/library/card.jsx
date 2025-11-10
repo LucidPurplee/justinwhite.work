@@ -10,7 +10,7 @@ const CardContentWrapper = ({ link, linkCreatesTab = true, children }) => {
         href={link} 
         target={linkCreatesTab ? "_blank" : "_self"}
         rel={linkCreatesTab ? "noopener noreferrer" : undefined}
-        className="flex items-start justify-between p-2 rounded-lg"
+        className="flex items-start justify-between flex-1"
       >
         {children}
       </a>
@@ -18,7 +18,7 @@ const CardContentWrapper = ({ link, linkCreatesTab = true, children }) => {
   }
   // If no link, render a div
   return (
-    <div className="flex items-start justify-between">
+    <div className="flex items-start justify-between flex-1">
       {children}
     </div>
   );
@@ -124,7 +124,7 @@ const Card = ({
                 {chips.map((chip, index) => (
                   <span
                     key={index}
-                    className="badge badge-sm border border-white/20 shadow-[inset_0_-2px_4px_rgba(255,255,255,.2)]"
+                    className="badge badge-sm bg-transparent border border-white/20 shadow-[inset_0_-2px_4px_rgba(255,255,255,.2)]"
                   >
                     {chip}
                   </span>
@@ -138,7 +138,7 @@ const Card = ({
         {canToggle && ( // Use the new 'canToggle' logic
           <button
             onClick={toggleExpand}
-            className="btn btn-circle transition-colors duration-400 flex-shrink-0 bg-base-200/48"
+            className="btn btn-circle btn-outline bg-transparent border-0"
             aria-expanded={isExpanded}
             aria-controls="rich-card-sections"
             aria-label = "toggle accordian"
