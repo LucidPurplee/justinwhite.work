@@ -79,7 +79,7 @@ const ALL_ITEMS = [
     icon: "/icos/Google.png",
     name: "Google IT Support",
     chips: ["Google", "5 Courses"],
-    categories: ["Education", "Highlights", "All"],
+    categories: ["Education", "All"],
     highlight: false,
 
     // Children can be other items
@@ -92,7 +92,7 @@ const ALL_ITEMS = [
       {
         id: 2,
         name: "The Bits and Bytes of Computer Networking",
-        chips: ["Incomplete"],
+        chips: ["Completed"],
       },
       {
         id: 3,
@@ -113,56 +113,34 @@ const ALL_ITEMS = [
   },
 
   {
-    id: "google-dataAnalytics",
-    //type: "container", // Special type for parent cards
-    icon: "/icos/Google.png",
-    name: "Google Data Analytics",
-    chips: ["Google", "8 Courses"],
-    categories: ["Education", "Highlights", "All"],
+    id: "sprkde",
+    type: "container", // Special type for parent cards
+    icon: "/icos/SprkPurp.png",
+    name: "Colorama",
+    chips: ["Sparkade", "Game Development"],
+    categories: ["Projects", "Highlights", "Experience", "All"],
+    highlight: false,
+    link: "https://www.roblox.com/communities/731176287/Sparkade",
+    linkCreatesTab: true,
+
+    // Children can be other items
+    children: [
+      
+    ],
+  },
+
+  {
+    id: "snhu",
+    type: "container", // Special type for parent cards
+    icon: "/icos/SNHU.png",
+    name: "Computer Science",
+    chips: ["SNHU", "Bachelor's degree"],
+    categories: ["Highlights", "Education", "All"],
     highlight: false,
 
     // Children can be other items
     children: [
-      {
-        id: 1,
-        name: "Foundations: Data, Data, Everywhere",
-        chips: ["Incomplete"],
-      },
-      {
-        id: 2,
-        name: "Ask Questions to Make Data-Driven Decisions",
-        chips: ["Incomplete"],
-      },
-      {
-        id: 3,
-        name: "Prepare Data for Exploration",
-        chips: ["Incomplete"],
-      },
-      {
-        id: 4,
-        name: "Process Data from Dirty to Clean",
-        chips: ["Incomplete"],
-      },
-      {
-        id: 5,
-        name: "Analyze Data to Answer Questions",
-        chips: ["Incomplete"],
-      },
-      {
-        id: 6,
-        name: "Share Data Through the Art of Visualization",
-        chips: ["Incomplete"],
-      },
-      {
-        id: 7,
-        name: "Data Analysis with R Programming",
-        chips: ["Incomplete"],
-      },
-      {
-        id: 8,
-        name: "Google Data Analytics Capstone: Complete a Case Study",
-        chips: ["Incomplete"],
-      },
+      
     ],
   },
 
@@ -185,12 +163,12 @@ const ALL_ITEMS = [
       {
         id: 2,
         name: "Project Initiation: Starting a Successful Project",
-        chips: ["Incomplete"],
+        chips: ["Completed"],
       },
       {
         id: 3,
         name: "Project Planning: Putting It All Together",
-        chips: ["Incomplete"],
+        chips: ["Completed"],
       },
       {
         id: 4,
@@ -215,6 +193,7 @@ const CATEGORIES = [
   { name: "Highlights", icon: TbGridDots },
   { name: "Education", icon: TbSchool },
   { name: "Projects", icon: TbBolt },
+  { name: "Experience", icon: TbRss },
   { name: "All", icon: TbGridDots },
 ];
 

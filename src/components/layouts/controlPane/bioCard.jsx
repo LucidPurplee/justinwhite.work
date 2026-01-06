@@ -6,17 +6,17 @@ const RealBio = () => {
     <Card
       title="Justin White"
       subtitle="hmu@justinwhite.work"
-      image="/icos/Profile.png"
+      image="/icos/Profile3.png"
       className="w-full pb-4 backdrop-blur-xs"
       visibleChildren={1}
       visibleChildrenBottom={0}
     >
 
-      <Blurb Header="About Me" Body="I'm Justin, a South Carolina-based developer pursuing data center or backend engineering." />
+      <Blurb Header="About Me" Body="Justin. South Carolina–based developer and SNHU student." />
 
-      <Blurb Header="What I Do" Body="Freelance web developer specializing in responsive, fast, and accessible sites using React, Astro, and Tailwind." />
+      <Blurb Header="What I Do" Body="I work in frontend and UX building fast, accessible sites with React, Astro, and Tailwind, and keeping projects organized and sane." />
 
-      <Blurb Header="Current Focus" Body="Collecting certifications (IT Support, Automation, Data Analytics) while hunting for my first job in the space." />
+      <Blurb Header="Current Focus" Body="Finishing my degree, leaning into project management and UX, and gaining hands-on product experience." />
 
     </Card>
   );
