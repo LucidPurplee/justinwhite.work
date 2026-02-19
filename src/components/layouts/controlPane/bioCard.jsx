@@ -6,7 +6,7 @@ const RealBio = () => {
     <Card
       title="Justin White"
       subtitle="hmu@justinwhite.work"
-      image="/icos/Profile3.png"
+      image="/icos/Profile4.jpg"
       className="w-full pb-4 backdrop-blur-xs"
       visibleChildren={1}
       visibleChildrenBottom={0}
